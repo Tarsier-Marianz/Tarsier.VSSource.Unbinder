@@ -1,0 +1,7 @@
+d:\users\tarsier\documents\visual studio 2015\Projects\AppUpdates.Uploader\Tarsier.UI\bin\Debug\Tarsier.UI.exe
+d:\users\tarsier\documents\visual studio 2015\Projects\AppUpdates.Uploader\Tarsier.UI\bin\Debug\Tarsier.UI.pdb
+d:\users\tarsier\documents\visual studio 2015\Projects\AppUpdates.Uploader\Tarsier.UI\obj\Debug\Tarsier.UI.MessageListBox.resources
+d:\users\tarsier\documents\visual studio 2015\Projects\AppUpdates.Uploader\Tarsier.UI\obj\Debug\Tarsier.UI.Properties.Resources.resources
+d:\users\tarsier\documents\visual studio 2015\Projects\AppUpdates.Uploader\Tarsier.UI\obj\Debug\Tarsier.UI.csproj.GenerateResource.Cache
+d:\users\tarsier\documents\visual studio 2015\Projects\AppUpdates.Uploader\Tarsier.UI\obj\Debug\Tarsier.UI.exe
+d:\users\tarsier\documents\visual studio 2015\Projects\AppUpdates.Uploader\Tarsier.UI\obj\Debug\Tarsier.UI.pdb

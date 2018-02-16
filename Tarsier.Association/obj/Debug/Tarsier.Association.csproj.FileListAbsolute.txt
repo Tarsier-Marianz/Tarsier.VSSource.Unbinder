@@ -1,0 +1,4 @@
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Association\bin\Debug\Tarsier.Association.dll
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Association\bin\Debug\Tarsier.Association.pdb
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Association\obj\Debug\Tarsier.Association.dll
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Association\obj\Debug\Tarsier.Association.pdb

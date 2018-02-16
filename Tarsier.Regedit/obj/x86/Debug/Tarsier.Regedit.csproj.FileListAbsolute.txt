@@ -1,0 +1,14 @@
+d:\Users\TARSIER\documents\visual studio 2015\Projects\AppUpdates.Uploader\Tarsier.Regedit\bin\x86\Debug\Tarsier.Regedit.dll
+d:\Users\TARSIER\documents\visual studio 2015\Projects\AppUpdates.Uploader\Tarsier.Regedit\bin\x86\Debug\Tarsier.Regedit.pdb
+d:\Users\TARSIER\documents\visual studio 2015\Projects\AppUpdates.Uploader\Tarsier.Regedit\bin\x86\Debug\Newtonsoft.Json.dll
+d:\Users\TARSIER\documents\visual studio 2015\Projects\AppUpdates.Uploader\Tarsier.Regedit\bin\x86\Debug\Newtonsoft.Json.pdb
+d:\Users\TARSIER\documents\visual studio 2015\Projects\AppUpdates.Uploader\Tarsier.Regedit\bin\x86\Debug\Newtonsoft.Json.xml
+d:\Users\TARSIER\documents\visual studio 2015\Projects\AppUpdates.Uploader\Tarsier.Regedit\obj\x86\Debug\Tarsier.Regedit.dll
+d:\Users\TARSIER\documents\visual studio 2015\Projects\AppUpdates.Uploader\Tarsier.Regedit\obj\x86\Debug\Tarsier.Regedit.pdb
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Regedit\bin\x86\Debug\Tarsier.Regedit.dll
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Regedit\bin\x86\Debug\Tarsier.Regedit.pdb
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Regedit\bin\x86\Debug\Newtonsoft.Json.dll
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Regedit\bin\x86\Debug\Newtonsoft.Json.pdb
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Regedit\bin\x86\Debug\Newtonsoft.Json.xml
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Regedit\obj\x86\Debug\Tarsier.Regedit.dll
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Regedit\obj\x86\Debug\Tarsier.Regedit.pdb

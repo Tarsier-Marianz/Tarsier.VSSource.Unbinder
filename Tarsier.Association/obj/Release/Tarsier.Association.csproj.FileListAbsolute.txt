@@ -1,0 +1,10 @@
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\AppUpdates.Uploader\Tarsier.Association\bin\Release\Tarsier.Association.dll
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\AppUpdates.Uploader\Tarsier.Association\bin\Release\Tarsier.Association.pdb
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\AppUpdates.Uploader\Tarsier.Association\obj\Release\Tarsier.Association.csprojResolveAssemblyReference.cache
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\AppUpdates.Uploader\Tarsier.Association\obj\Release\Tarsier.Association.dll
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\AppUpdates.Uploader\Tarsier.Association\obj\Release\Tarsier.Association.pdb
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Association\bin\Release\Tarsier.Association.dll
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Association\bin\Release\Tarsier.Association.pdb
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Association\obj\Release\Tarsier.Association.csprojResolveAssemblyReference.cache
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Association\obj\Release\Tarsier.Association.dll
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Association\obj\Release\Tarsier.Association.pdb

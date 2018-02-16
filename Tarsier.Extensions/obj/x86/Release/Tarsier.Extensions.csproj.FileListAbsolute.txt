@@ -1,0 +1,12 @@
+d:\Users\TARSIER\documents\visual studio 2015\Projects\AppUpdates.Uploader\Tarsier.Extensions\bin\x86\Release\Tarsier.Extensions.dll
+d:\Users\TARSIER\documents\visual studio 2015\Projects\AppUpdates.Uploader\Tarsier.Extensions\bin\x86\Release\Tarsier.Extensions.pdb
+d:\Users\TARSIER\documents\visual studio 2015\Projects\AppUpdates.Uploader\Tarsier.Extensions\obj\x86\Release\Tarsier.Extensions.dll
+d:\Users\TARSIER\documents\visual studio 2015\Projects\AppUpdates.Uploader\Tarsier.Extensions\obj\x86\Release\Tarsier.Extensions.pdb
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\AppUpdates.Uploader\Tarsier.Extensions\bin\x86\Release\Tarsier.Extensions.dll
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\AppUpdates.Uploader\Tarsier.Extensions\bin\x86\Release\Tarsier.Extensions.pdb
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\AppUpdates.Uploader\Tarsier.Extensions\obj\x86\Release\Tarsier.Extensions.dll
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\AppUpdates.Uploader\Tarsier.Extensions\obj\x86\Release\Tarsier.Extensions.pdb
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Extensions\bin\x86\Release\Tarsier.Extensions.dll
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Extensions\bin\x86\Release\Tarsier.Extensions.pdb
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Extensions\obj\x86\Release\Tarsier.Extensions.dll
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Extensions\obj\x86\Release\Tarsier.Extensions.pdb

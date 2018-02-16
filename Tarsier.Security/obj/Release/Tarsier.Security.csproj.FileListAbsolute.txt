@@ -1,0 +1,10 @@
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\AppUpdates.Uploader\Tarsier.Security\bin\Release\Tarsier.Security.dll
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\AppUpdates.Uploader\Tarsier.Security\bin\Release\Tarsier.Security.pdb
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\AppUpdates.Uploader\Tarsier.Security\obj\Release\Tarsier.Security.csprojResolveAssemblyReference.cache
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\AppUpdates.Uploader\Tarsier.Security\obj\Release\Tarsier.Security.dll
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\AppUpdates.Uploader\Tarsier.Security\obj\Release\Tarsier.Security.pdb
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Security\bin\Release\Tarsier.Security.dll
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Security\bin\Release\Tarsier.Security.pdb
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Security\obj\Release\Tarsier.Security.csprojResolveAssemblyReference.cache
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Security\obj\Release\Tarsier.Security.dll
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Security\obj\Release\Tarsier.Security.pdb
