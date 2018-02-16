@@ -1,7 +1,7 @@
 ﻿using Microsoft.Win32;
 namespace Tarsier.Regedit {
     public class RegistryControl {
-        private string appKey = "SOFTWARE\\Marianz\\App Updates Uploader";
+        private string appKey = "SOFTWARE\\Marianz\\TarsierVSSCUnbinder";
         public string AppKey {
             get { return appKey; }
             set { appKey = value; }
