@@ -6,10 +6,9 @@ using System.Text;
 namespace Tarsier.Extensions {
     public static class IntegerUtils {
         public static int ToSafeInteger(this object integerValue) {
-            int outInt = 0;
-            if(int.TryParse(integerValue.ToString(), out outInt)) {
-                return outInt;
-            }
+			if(integerValue!=null){
+				return integerValue.ToString().ToSafeInteger();
+			}            
             return 0;
         }
 
