@@ -2,3 +2,4 @@ G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Sources\bin\Debug\Tarsier.Sources.pdb
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Sources\obj\Debug\Tarsier.Sources.dll
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Sources\obj\Debug\Tarsier.Sources.pdb
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Sources\obj\Debug\Tarsier.Sources.csprojResolveAssemblyReference.cache

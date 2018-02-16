@@ -442,13 +442,12 @@ namespace Tarsier.VSSource.Unbinder {
         }
 
         private void ToolBarMenusVisibility(bool state) {
-             btnSaveProfile.Enabled = btnAddFiles.Enabled = btnFolder.Enabled =  btnUpload.Enabled =
-               newProfileToolStripMenuItem.Enabled = saveProfileToolStripMenuItem.Enabled = addFileToolStripMenuItem.Enabled =
-               loadFromFolderToolStripMenuItem.Enabled = loadFileFromExeToolStripMenuItem.Enabled = uploadToolStripMenuItem.Enabled = state;
+           btnAddFiles.Enabled = btnFolder.Enabled =  btnUpload.Enabled= menuItemFiles.Enabled =
+               menuItemFolder.Enabled = menuItemUnbind.Enabled = state;
         }
         private void tmrCheck_Tick(object sender, EventArgs e) {
             //ToolBarMenusVisibility(!_isLoading);
-            btnUpload.Enabled = uploadToolStripMenuItem.Enabled = listViewFiles.Items.Count > 0;
+            btnUpload.Enabled = menuItemUnbind.Enabled = listViewFiles.Items.Count > 0;
             btnClearHistory.Enabled = clearHistoryToolStripMenuItem.Enabled = (tabControl1.SelectedIndex == 1 && listViewHistory.Items.Count > 0);
         }
 

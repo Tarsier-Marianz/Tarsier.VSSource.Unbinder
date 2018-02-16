@@ -13,3 +13,4 @@ G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Config\bin\x86\Debug\System.Data.SQLite.pdb
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Config\obj\x86\Debug\Tarsier.Config.dll
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Config\obj\x86\Debug\Tarsier.Config.pdb
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.Config\obj\x86\Debug\Tarsier.Config.csprojResolveAssemblyReference.cache
