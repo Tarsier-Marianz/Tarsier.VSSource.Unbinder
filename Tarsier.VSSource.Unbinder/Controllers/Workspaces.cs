@@ -37,7 +37,17 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
             table.AddColumn(new SQLiteColumn("LastDateUnbind", ColType.Text));
             sqlite.CreateTable(table);
         }
+        public bool ClearWorkspaces() {
+            try {
+                if(sqlite.IsTableExist(defaultTable)) {
+                    sqlite.DropTable(defaultTable);
+                    return true;
+                }
+            } catch {
+            }
+            return false;
 
+        }
         public DataTable GetDataTable(string filter) {
             if(string.IsNullOrEmpty(defaultTable)) {
                 return null;

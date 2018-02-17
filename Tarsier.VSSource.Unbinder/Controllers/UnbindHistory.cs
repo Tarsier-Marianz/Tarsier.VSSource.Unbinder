@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using Tarsier.Config;
 using Tarsier.Extensions;
 using Tarsier.UI;
+using Tarsier.Sources;
+using Newtonsoft.Json.Linq;
 
 namespace Tarsier.VSSource.Unbinder.Controllers {
     public class UnbindHistory {
@@ -28,10 +30,10 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
             defaultTable = tableName;
             table = new SQLiteTable(tableName);
             table.AddColumn(new SQLiteColumn("ID", true));
-            table.AddColumn(new SQLiteColumn("FileCount", ColType.Text));
+            table.AddColumn(new SQLiteColumn("SourceCount", ColType.Text));
             table.AddColumn(new SQLiteColumn("Code", ColType.Text));
-            table.AddColumn(new SQLiteColumn("DateUnbind", ColType.Text));
-            table.AddColumn(new SQLiteColumn("TimeUnbind", ColType.Text));
+            table.AddColumn(new SQLiteColumn("SourceType", ColType.Text));
+            table.AddColumn(new SQLiteColumn("Details", ColType.Text));
             sqlite.CreateTable(table);
         }
 
@@ -52,10 +54,10 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
                 foreach(DataRow dr in dt.Rows) {
                     History pro = new History() {
                         ID = dr["ID"].ToSafeInteger(),
-                        FileCount = dr["FileCount"].ToSafeInteger(),
+                        SourceCount = dr["SourceCount"].ToSafeInteger(),
                         Code = dr["Code"].ToSafeString(),
-                        DateUnbind = dr["DateUnbind"].ToSafeString(),
-                        TimeUnbind = dr["TimeUnbind"].ToSafeString()
+                        SourceType = dr["SourceType"].ToSafeString(),
+                        Details = dr["Details"].ToSafeString()
                     };
                     profs.Add(pro);
                 }
@@ -65,67 +67,60 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
         public void Add(History h) {
             Dictionary<string, object> data = new Dictionary<string, object>();
             
-            string dateUploaded = string.IsNullOrEmpty(h.DateUnbind) ? DateTime.Now.ToShortDateString() : h.DateUnbind;
-            string timeUploaded = string.IsNullOrEmpty(h.TimeUnbind) ? DateTime.Now.ToString("hh:mm:ss tt") : h.TimeUnbind;
-            string code=( dateUploaded+ timeUploaded).RemoveNonAlphaNumeric().ToLower();
-            data.Add("FileCount", h.FileCount);
+            string timeUploaded = string.IsNullOrEmpty(h.Details) ? DateTime.Now.ToString("yyyy-mm-dd hh:mm:ss tt") : h.Details;
+            string code=(h.SourceType + timeUploaded).RemoveNonAlphaNumeric().ToLower();
+            data.Add("SourceCount", h.SourceCount);
             data.Add("Code", code);
-            data.Add("DateUnbind", dateUploaded);
-            data.Add("TimeUnbind", timeUploaded);
+            data.Add("SourceType", h.SourceType);
+            data.Add("Details", timeUploaded);
             if(sqlite.IsExist(defaultTable, "Code", code.ToStringType())) {
                 sqlite.Update(defaultTable, data, "Code", code);
             } else {
                 sqlite.Insert(defaultTable, data);
             }
         }
-
+        public void Add(SourceSummary summa) {
+            if(summa != null) {
+                JObject json = JObject.FromObject(summa);
+                foreach(JProperty property in json.Properties()) {
+                    History h = new History() {
+                        SourceType = property.Name,
+                        SourceCount = property.Value.ToSafeInteger(),
+                        Details = DateTime.Now.ToString("yyyy-mm-dd hh:mm:ss tt")
+                    };
+                    Add(h);
+                }
+            }
+        }
+       
         public void Add(Workspace pro) {
             if(pro != null) {
                 History hist = new History() {
-                    FileCount = pro.FileCount,
-                    DateUnbind = DateTime.Now.ToShortDateString(),
-                     TimeUnbind= DateTime.Now.ToString("hh:mm:ss tt")
+                    SourceCount = pro.FileCount,
+                    Details = DateTime.Now.ToString("yyyy-mm-dd hh:mm:ss tt")
                 };
                 Add(hist);
             }
         }
-
-        public History GetHistory(string version) {
-            if(string.IsNullOrEmpty(version)) {
-                throw new ArgumentNullException("version");
-            }
-            DataTable dt = sqlite.Select(string.Format(Queries.SELECT_TABLE_WHERE_LIMIT1, defaultTable, string.Format("Version ='{0}'", version)));
-            if(dt != null) {
-                if(dt.Rows.Count > 0) {
-                    foreach(DataRow dr in dt.Rows) {
-                        return new History() {
-                            ID = dr["ID"].ToSafeInteger(),
-                            FileCount = dr["FileCount"].ToSafeInteger(),
-                            Code = dr["Code"].ToSafeString(),
-                            DateUnbind = dr["DateUnbind"].ToSafeString(),
-                            TimeUnbind = dr["TimeUnbind"].ToSafeString()
-                        };
-                    }
-                }
-            }
-            return null;
-        }
+        
 
         public void Initialize(ListView list, string table) {
-            defaultTable = table;
-            if(!sqlite.IsTableExist(table.Trim())) {
+            defaultTable = table.RemoveNonAlphaNumeric().ToLower();
+            if(string.IsNullOrEmpty(defaultTable)) {
                 return;
+            }
+            if(!sqlite.IsTableExist(defaultTable)) {
+                CreateTable(defaultTable);
             }
             List<History> histories = GetHistories();
             if(histories.Count > 0) {
                 foreach(History h in histories) {
-                    ListViewItem item = new ListViewItem(h.FileCount.ToSafeString(), 5);
+                    ListViewItem item = new ListViewItem(h.SourceType, 5);
                     item.UseItemStyleForSubItems = false;
-                    item.SubItems.Add(h.DateUnbind);
-                    item.SubItems.Add(h.TimeUnbind);
+                    item.SubItems.Add(h.SourceCount.ToSafeString());
+                    item.SubItems.Add(h.Details);
                     item.SubItems[1].ForeColor = Color.DarkGray;
                     item.SubItems[2].ForeColor = Color.Gray;
-                    item.SubItems[3].ForeColor = Color.Gray;
                     if(list.InvokeRequired) {
                         list.Invoke((MethodInvoker)delegate () {
                             list.Items.Add(item);

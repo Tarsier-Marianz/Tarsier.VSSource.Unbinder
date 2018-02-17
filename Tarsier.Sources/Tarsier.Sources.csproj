@@ -54,6 +54,7 @@
     <Compile Include="FileEntry.cs" />
     <Compile Include="SourceAnalyzerAsync.cs" />
     <Compile Include="SourceControlAnalyzer.cs" />
+    <Compile Include="SourceSummary.cs" />
     <Compile Include="SourceUnbinder.cs" />
     <Compile Include="SourceWorker.cs">
       <SubType>Component</SubType>

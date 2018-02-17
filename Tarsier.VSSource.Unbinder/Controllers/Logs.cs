@@ -33,6 +33,17 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
             table.AddColumn(new SQLiteColumn("Method", ColType.Text));
             sqliteHelper.CreateTable(table);
         }
+        public bool ClearLogs() {
+            try {
+                if(sqliteHelper.IsTableExist(defaultTable)) {
+                    sqliteHelper.DropTable(defaultTable);
+                    return true;
+                }
+            } catch {
+            }
+            return false;
+
+        }
         public void Add(string description, string category, string method, ParseMessageType type) {
             Dictionary<string, object> valueList = new Dictionary<string, object>();
             valueList.Add("Details", DateTime.Now.ToString("yyyy-MM-dd hh:MM:ss"));

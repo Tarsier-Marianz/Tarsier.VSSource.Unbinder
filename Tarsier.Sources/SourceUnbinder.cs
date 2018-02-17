@@ -9,6 +9,12 @@ using Tarsier.Sources.Events;
 namespace Tarsier.Sources {
     public class SourceUnbinder {
 
+        private SourceSummary _sourceSumm = new SourceSummary();
+        public SourceSummary SourceSummary {
+            get { return _sourceSumm; }
+            
+        }
+
         public event EventHandler<UnbindProgressEvents> UnbindProgress;
         /// <summary>
         /// Processes a list of files based on the porcessing method.
@@ -33,13 +39,22 @@ namespace Tarsier.Sources {
                 throw new ArgumentException("Internal Error: UnbindEntry called with a file that is not a project");
             }
             bool success = false;
-            if(entry.Type== Enumeration.FileType.Solution) {
-                success= ModifySolutionFile(entry);
+            if(entry.Type == Enumeration.FileType.Solution) {
+                _sourceSumm.Solution++;
+                success = ModifySolutionFile(entry);
             } else if(entry.Type == Enumeration.FileType.CsProj || entry.Type == Enumeration.FileType.VbProj) {
+              
                 success = ModifyProjectFile(entry);
+                if(entry.Type == Enumeration.FileType.CsProj) {
+                    _sourceSumm.CsProj++;
+                } else {
+                    _sourceSumm.VbProj++;
+                }
             } else if(entry.Type == Enumeration.FileType.VsSource) {
+                _sourceSumm.VsSource++;
                 success = DeleteSourceFile(entry);
-            }else {
+            } else {
+                _sourceSumm.Unknown++;
                 success = false;
             }
             return success;
@@ -165,7 +180,7 @@ namespace Tarsier.Sources {
         /// 
         /// </summary>
         /// <param name="el"></param>
-        private void RemoveSCCElementsAttributes(System.Xml.Linq.XElement el) {
+        private void RemoveSCCElementsAttributes(XElement el) {
             el.Elements().Where(x => x.Name.LocalName.StartsWith("Scc")).Remove();
             el.Attributes().Where(x => x.Name.LocalName.StartsWith("Scc")).Remove();
 
@@ -217,10 +232,8 @@ namespace Tarsier.Sources {
                 while(!reader.EndOfStream) {
                     lines.Add(reader.ReadLine());
                 }
-
                 encoding = reader.CurrentEncoding;
             }
-
             return lines.ToArray();
         }
     }

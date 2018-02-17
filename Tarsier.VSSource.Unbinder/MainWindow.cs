@@ -81,11 +81,11 @@ namespace Tarsier.VSSource.Unbinder {
         }
         private void InitHistory(string profileName) {
             _history = new UnbindHistory(Database.HISTORY);
-            tabPageHistory.Text = "History";
+            tabPageSummary.Text = "History";
             if(!string.IsNullOrEmpty(profileName)) {
                 listViewHistory.Items.Clear();
                 _history.Initialize(listViewHistory, profileName);
-                tabPageHistory.Text = (listViewHistory.Items.Count > 0) ? string.Format("History [{0}]", listViewHistory.Items.Count) : "History";
+                tabPageSummary.Text = (listViewHistory.Items.Count > 0) ? string.Format("History [{0}]", listViewHistory.Items.Count) : "History";
             }
         }
         private void Action(string tag) {
@@ -166,7 +166,7 @@ namespace Tarsier.VSSource.Unbinder {
         private void NewProfile() {
             lblProfileCaption.Text = string.Empty;
             tabPageFiles.Text = "Files";
-            tabPageHistory.Text = "History";
+            tabPageSummary.Text = "History";
             lblStatus.Text = "Ready...";
             lblStatusFile.Text = string.Empty;
             progressBar.Visible = false;
@@ -238,7 +238,18 @@ namespace Tarsier.VSSource.Unbinder {
         }
 
         private void Unbind() {
-
+            if(_isLoading) { return; } //do nothing if still loading
+            if(_sourceEntries.Count > 0) {
+                UpdateProgress(_sourceEntries.Count, true);
+                _unbinder.UnbindProgress += UnbindProgress;
+                if(!bgWorkerUnbind.IsBusy) {
+                    lblProfileCaption.Text =
+                        lblStatus.Text = "Unbinding...";
+                    _isLoading = progressBar.Visible = true;
+                    ToolBarMenusVisibility(false);
+                    bgWorkerUnbind.RunWorkerAsync();
+                }
+            }
         }
         private void UpdateProgress(int value, bool maximum) {
             if(progressBar.GetCurrentParent().InvokeRequired) {
@@ -277,7 +288,6 @@ namespace Tarsier.VSSource.Unbinder {
             }
             listViewFiles.Invalidate();
         }
-
 
         private void StartLoadFiles(bool newProfile) {
             if(!bgWorker.IsBusy) {
@@ -394,23 +404,27 @@ namespace Tarsier.VSSource.Unbinder {
         }
 
         private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
-           
+            _unbinder.UnbindProgress -= UnbindProgress;
             SetProfileDetails();
+            lblProfileCaption.Text = _selectedWorkspace.Name;
             lblStatusFile.Text = (_truncatePath) ? _folder.TruncatePath() : _folder;
-            lblStatus.Text = "Finished...";
-            progressBar.Value = 0;
-            progressBar.Visible = false;
-            _isLoading = false;
-            ToolBarMenusVisibility(true);
-            
+
             if(_sourceEntries.Count> 0) {
                 _logs.Add(string.Format("Loading {0} files from folder {1}.", _sourceEntries.Count, _folder), "Events", "Load Profile", ParseMessageType.File);
                 _logs.Initialize(listLogs);
+            }
+            if(_autoUnBind) {
+                _history.Add(_unbinder.SourceSummary);
             }
             if(_automaticSaveWorkspace) {
                 SaveProfile();
                 InitWorkspace();
             }
+            lblStatus.Text = "Finished...";
+            progressBar.Value = 0;
+            progressBar.Visible = false;
+            _isLoading = false;
+            ToolBarMenusVisibility(true);
         }
 
         #endregion - Control Events -
@@ -442,12 +456,12 @@ namespace Tarsier.VSSource.Unbinder {
         }
 
         private void ToolBarMenusVisibility(bool state) {
-           btnAddFiles.Enabled = btnFolder.Enabled =  btnUpload.Enabled= menuItemFiles.Enabled =
+           btnAddFiles.Enabled = btnFolder.Enabled =  btnUnbind.Enabled= menuItemFiles.Enabled =
                menuItemFolder.Enabled = menuItemUnbind.Enabled = state;
         }
         private void tmrCheck_Tick(object sender, EventArgs e) {
             //ToolBarMenusVisibility(!_isLoading);
-            btnUpload.Enabled = menuItemUnbind.Enabled = listViewFiles.Items.Count > 0;
+            btnUnbind.Enabled = menuItemUnbind.Enabled = listViewFiles.Items.Count > 0;
             btnClearHistory.Enabled = clearHistoryToolStripMenuItem.Enabled = (tabControl1.SelectedIndex == 1 && listViewHistory.Items.Count > 0);
         }
 
@@ -475,5 +489,47 @@ namespace Tarsier.VSSource.Unbinder {
                 bgWorker.RunWorkerCompleted -= new RunWorkerCompletedEventHandler(this.bgWorker_RunWorkerCompleted);
             }
         }
+
+        private void bgWorkerUnbind_DoWork(object sender, DoWorkEventArgs e) {
+            int i = 1;
+            foreach(FileEntry entry in _sourceEntries) {
+                if(bgWorkerUnbind != null && bgWorkerUnbind.CancellationPending) {
+                    e.Cancel = true;
+                    break;
+                }
+                if(_unbinder.UnbindEntry(entry)) {
+
+                }
+                bgWorkerUnbind.ReportProgress(i, entry);
+                i++;
+            }
+        }
+
+        private void bgWorkerUnbind_ProgressChanged(object sender, ProgressChangedEventArgs e) {
+            if(e.ProgressPercentage <= progressBar.Maximum) {
+                progressBar.Value = e.ProgressPercentage;
+            }
+            if(e.UserState != null) {
+                FileEntry entry = e.UserState as FileEntry;
+                if(entry != null) {
+                    lblStatusFile.Text = entry.Info.FullName;
+                }
+            }
+        }
+
+        private void bgWorkerUnbind_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
+            _unbinder.UnbindProgress -= UnbindProgress;
+            lblStatusFile.Text = (_truncatePath) ? _folder.TruncatePath() : _folder;
+            lblStatus.Text = "Finished...";
+            progressBar.Value = 0;
+            progressBar.Visible = false;
+            lblProfileCaption.Text = _selectedWorkspace.Name;
+            _isLoading = false;
+            ToolBarMenusVisibility(true);
+            _history.Add(_unbinder.SourceSummary); //Add source summary
+            InitHistory(_selectedWorkspace.Name);
+        }
+
+       
     }
 }

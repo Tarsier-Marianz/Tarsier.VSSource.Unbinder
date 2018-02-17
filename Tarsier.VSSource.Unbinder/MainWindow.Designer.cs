@@ -31,6 +31,8 @@
             this.menuItemFiles = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.actionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemUnbind = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,7 +40,6 @@
             this.clearHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.configServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.profileExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,7 +61,7 @@
             this.btnRefreshProfile = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnUpload = new System.Windows.Forms.ToolStripButton();
+            this.btnUnbind = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.btnClearHistory = new System.Windows.Forms.ToolStripButton();
             this.btnClearLogs = new System.Windows.Forms.ToolStripButton();
@@ -86,11 +87,11 @@
             this.colType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.imageList32 = new System.Windows.Forms.ImageList(this.components);
             this.imageList16 = new System.Windows.Forms.ImageList(this.components);
-            this.tabPageHistory = new System.Windows.Forms.TabPage();
+            this.tabPageSummary = new System.Windows.Forms.TabPage();
             this.listViewHistory = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderCount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderSource = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderDetails = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.imageListInfo = new System.Windows.Forms.ImageList(this.components);
             this.panelFilesTop = new System.Windows.Forms.Panel();
             this.lblProfileCaption = new System.Windows.Forms.Label();
@@ -110,8 +111,7 @@
             this.bgWorker = new System.ComponentModel.BackgroundWorker();
             this.tmrCheck = new System.Windows.Forms.Timer(this.components);
             this.tipUploader = new System.Windows.Forms.ToolTip(this.components);
-            this.optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.bgWorkerUnbind = new System.ComponentModel.BackgroundWorker();
             this.menuStripUploader.SuspendLayout();
             this.statusStripUploader.SuspendLayout();
             this.toolStripUploader.SuspendLayout();
@@ -128,7 +128,7 @@
             this.splitContainer2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageFiles.SuspendLayout();
-            this.tabPageHistory.SuspendLayout();
+            this.tabPageSummary.SuspendLayout();
             this.panelFilesTop.SuspendLayout();
             this.tabControlDetails.SuspendLayout();
             this.tabPageProfile.SuspendLayout();
@@ -166,13 +166,13 @@
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(160, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
             // 
             // menuItemFiles
             // 
             this.menuItemFiles.Image = ((System.Drawing.Image)(resources.GetObject("menuItemFiles.Image")));
             this.menuItemFiles.Name = "menuItemFiles";
-            this.menuItemFiles.Size = new System.Drawing.Size(163, 22);
+            this.menuItemFiles.Size = new System.Drawing.Size(152, 22);
             this.menuItemFiles.Tag = "ADD_FILES";
             this.menuItemFiles.Text = "Add File...";
             this.menuItemFiles.Click += new System.EventHandler(this.MenuItems_Click);
@@ -181,21 +181,34 @@
             // 
             this.menuItemFolder.Image = ((System.Drawing.Image)(resources.GetObject("menuItemFolder.Image")));
             this.menuItemFolder.Name = "menuItemFolder";
-            this.menuItemFolder.Size = new System.Drawing.Size(163, 22);
+            this.menuItemFolder.Size = new System.Drawing.Size(152, 22);
             this.menuItemFolder.Tag = "ADD_FOLDER";
-            this.menuItemFolder.Text = "Load from folder";
+            this.menuItemFolder.Text = "Add Folder";
             this.menuItemFolder.Click += new System.EventHandler(this.MenuItems_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(160, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // optionsToolStripMenuItem1
+            // 
+            this.optionsToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("optionsToolStripMenuItem1.Image")));
+            this.optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
+            this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.optionsToolStripMenuItem1.Text = "Options";
+            this.optionsToolStripMenuItem1.Click += new System.EventHandler(this.MenuItems_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(149, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exitToolStripMenuItem.Image")));
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Tag = "EXIT";
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.MenuItems_Click);
@@ -208,7 +221,6 @@
             this.clearHistoryToolStripMenuItem,
             this.clearLogsToolStripMenuItem,
             this.toolStripSeparator4,
-            this.configServerToolStripMenuItem,
             this.optionsToolStripMenuItem});
             this.actionToolStripMenuItem.Name = "actionToolStripMenuItem";
             this.actionToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
@@ -218,7 +230,7 @@
             // 
             this.menuItemUnbind.Image = ((System.Drawing.Image)(resources.GetObject("menuItemUnbind.Image")));
             this.menuItemUnbind.Name = "menuItemUnbind";
-            this.menuItemUnbind.Size = new System.Drawing.Size(152, 22);
+            this.menuItemUnbind.Size = new System.Drawing.Size(142, 22);
             this.menuItemUnbind.Tag = "UNBIND";
             this.menuItemUnbind.Text = "Unbind";
             this.menuItemUnbind.Click += new System.EventHandler(this.MenuItems_Click);
@@ -226,13 +238,13 @@
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(139, 6);
             // 
             // clearHistoryToolStripMenuItem
             // 
             this.clearHistoryToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("clearHistoryToolStripMenuItem.Image")));
             this.clearHistoryToolStripMenuItem.Name = "clearHistoryToolStripMenuItem";
-            this.clearHistoryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clearHistoryToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.clearHistoryToolStripMenuItem.Tag = "CLEAR_HISTORY";
             this.clearHistoryToolStripMenuItem.Text = "Clear History";
             this.clearHistoryToolStripMenuItem.Click += new System.EventHandler(this.MenuItems_Click);
@@ -241,7 +253,7 @@
             // 
             this.clearLogsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("clearLogsToolStripMenuItem.Image")));
             this.clearLogsToolStripMenuItem.Name = "clearLogsToolStripMenuItem";
-            this.clearLogsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clearLogsToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.clearLogsToolStripMenuItem.Tag = "CLEAR_LOGS";
             this.clearLogsToolStripMenuItem.Text = "Clear Logs";
             this.clearLogsToolStripMenuItem.Click += new System.EventHandler(this.MenuItems_Click);
@@ -249,22 +261,13 @@
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
-            // 
-            // configServerToolStripMenuItem
-            // 
-            this.configServerToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("configServerToolStripMenuItem.Image")));
-            this.configServerToolStripMenuItem.Name = "configServerToolStripMenuItem";
-            this.configServerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.configServerToolStripMenuItem.Tag = "SERVER_CONFIG";
-            this.configServerToolStripMenuItem.Text = "Config Server";
-            this.configServerToolStripMenuItem.Click += new System.EventHandler(this.MenuItems_Click);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(139, 6);
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("optionsToolStripMenuItem.Image")));
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.optionsToolStripMenuItem.Tag = "OPTIONS";
             this.optionsToolStripMenuItem.Text = "Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.MenuItems_Click);
@@ -341,7 +344,7 @@
             // 
             this.helpToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripMenuItem1.Image")));
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
             this.helpToolStripMenuItem1.Tag = "HELP";
             this.helpToolStripMenuItem1.Text = "Help";
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.MenuItems_Click);
@@ -350,7 +353,7 @@
             // 
             this.aboutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aboutToolStripMenuItem.Image")));
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Tag = "ABOUT";
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.MenuItems_Click);
@@ -393,7 +396,7 @@
             this.btnRefreshProfile,
             this.toolStripLabel2,
             this.toolStripSeparator3,
-            this.btnUpload,
+            this.btnUnbind,
             this.toolStripLabel1,
             this.btnClearHistory,
             this.btnClearLogs,
@@ -427,7 +430,7 @@
             this.btnFolder.Name = "btnFolder";
             this.btnFolder.Size = new System.Drawing.Size(23, 22);
             this.btnFolder.Tag = "ADD_FOLDER";
-            this.btnFolder.Text = "Load from Folder";
+            this.btnFolder.Text = "Add Folder";
             this.btnFolder.Click += new System.EventHandler(this.Buttons_Click);
             // 
             // toolStripSeparator6
@@ -457,16 +460,16 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
-            // btnUpload
+            // btnUnbind
             // 
-            this.btnUpload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnUpload.Image = ((System.Drawing.Image)(resources.GetObject("btnUpload.Image")));
-            this.btnUpload.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(23, 22);
-            this.btnUpload.Tag = "UPLOAD";
-            this.btnUpload.Text = "Upload";
-            this.btnUpload.Click += new System.EventHandler(this.Buttons_Click);
+            this.btnUnbind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnUnbind.Image = ((System.Drawing.Image)(resources.GetObject("btnUnbind.Image")));
+            this.btnUnbind.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnUnbind.Name = "btnUnbind";
+            this.btnUnbind.Size = new System.Drawing.Size(23, 22);
+            this.btnUnbind.Tag = "UNBIND";
+            this.btnUnbind.Text = "Unbind";
+            this.btnUnbind.Click += new System.EventHandler(this.Buttons_Click);
             // 
             // toolStripLabel1
             // 
@@ -658,7 +661,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPageFiles);
-            this.tabControl1.Controls.Add(this.tabPageHistory);
+            this.tabControl1.Controls.Add(this.tabPageSummary);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ImageList = this.imageListInfo;
             this.tabControl1.ItemSize = new System.Drawing.Size(55, 24);
@@ -730,24 +733,24 @@
             this.imageList16.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList16.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // tabPageHistory
+            // tabPageSummary
             // 
-            this.tabPageHistory.Controls.Add(this.listViewHistory);
-            this.tabPageHistory.ImageIndex = 4;
-            this.tabPageHistory.Location = new System.Drawing.Point(4, 28);
-            this.tabPageHistory.Name = "tabPageHistory";
-            this.tabPageHistory.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageHistory.Size = new System.Drawing.Size(541, 202);
-            this.tabPageHistory.TabIndex = 1;
-            this.tabPageHistory.Text = "History";
-            this.tabPageHistory.UseVisualStyleBackColor = true;
+            this.tabPageSummary.Controls.Add(this.listViewHistory);
+            this.tabPageSummary.ImageIndex = 4;
+            this.tabPageSummary.Location = new System.Drawing.Point(4, 28);
+            this.tabPageSummary.Name = "tabPageSummary";
+            this.tabPageSummary.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSummary.Size = new System.Drawing.Size(541, 202);
+            this.tabPageSummary.TabIndex = 1;
+            this.tabPageSummary.Text = "Summary";
+            this.tabPageSummary.UseVisualStyleBackColor = true;
             // 
             // listViewHistory
             // 
             this.listViewHistory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader3,
-            this.columnHeader4});
+            this.columnHeaderSource,
+            this.columnHeaderCount,
+            this.columnHeaderDetails});
             this.listViewHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewHistory.FullRowSelect = true;
             this.listViewHistory.LargeImageList = this.imageList32;
@@ -759,20 +762,22 @@
             this.listViewHistory.UseCompatibleStateImageBehavior = false;
             this.listViewHistory.View = System.Windows.Forms.View.Details;
             // 
-            // columnHeader1
+            // columnHeaderCount
             // 
-            this.columnHeader1.Text = "File Count";
-            this.columnHeader1.Width = 176;
+            this.columnHeaderCount.DisplayIndex = 0;
+            this.columnHeaderCount.Text = "Source Count";
+            this.columnHeaderCount.Width = 176;
             // 
-            // columnHeader3
+            // columnHeaderSource
             // 
-            this.columnHeader3.Text = "Date Uploaded";
-            this.columnHeader3.Width = 151;
+            this.columnHeaderSource.DisplayIndex = 1;
+            this.columnHeaderSource.Text = "Source Type";
+            this.columnHeaderSource.Width = 151;
             // 
-            // columnHeader4
+            // columnHeaderDetails
             // 
-            this.columnHeader4.Text = "Time Uploaded";
-            this.columnHeader4.Width = 129;
+            this.columnHeaderDetails.Text = "Details";
+            this.columnHeaderDetails.Width = 129;
             // 
             // imageListInfo
             // 
@@ -983,17 +988,13 @@
             // 
             this.tipUploader.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // optionsToolStripMenuItem1
+            // bgWorkerUnbind
             // 
-            this.optionsToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("optionsToolStripMenuItem1.Image")));
-            this.optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
-            this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(163, 22);
-            this.optionsToolStripMenuItem1.Text = "Options";
-            // 
-            // toolStripSeparator9
-            // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(160, 6);
+            this.bgWorkerUnbind.WorkerReportsProgress = true;
+            this.bgWorkerUnbind.WorkerSupportsCancellation = true;
+            this.bgWorkerUnbind.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerUnbind_DoWork);
+            this.bgWorkerUnbind.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkerUnbind_ProgressChanged);
+            this.bgWorkerUnbind.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerUnbind_RunWorkerCompleted);
             // 
             // MainWindow
             // 
@@ -1033,7 +1034,7 @@
             this.splitContainer2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPageFiles.ResumeLayout(false);
-            this.tabPageHistory.ResumeLayout(false);
+            this.tabPageSummary.ResumeLayout(false);
             this.panelFilesTop.ResumeLayout(false);
             this.panelFilesTop.PerformLayout();
             this.tabControlDetails.ResumeLayout(false);
@@ -1066,7 +1067,7 @@
         private System.Windows.Forms.ToolStrip toolStripUploader;
         private System.Windows.Forms.ToolStripButton btnAddFiles;
         private System.Windows.Forms.ToolStripButton btnFolder;
-        private System.Windows.Forms.ToolStripButton btnUpload;
+        private System.Windows.Forms.ToolStripButton btnUnbind;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.SplitContainer splitContainer2;
@@ -1081,7 +1082,6 @@
         private System.Windows.Forms.TabControl tabControlDetails;
         private System.Windows.Forms.TabPage tabPageProfile;
         private System.Windows.Forms.TabPage tabPageLogs;
-        private System.Windows.Forms.ToolStripMenuItem configServerToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton btnExit;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
@@ -1126,15 +1126,16 @@
         private System.Windows.Forms.ToolTip tipUploader;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageFiles;
-        private System.Windows.Forms.TabPage tabPageHistory;
+        private System.Windows.Forms.TabPage tabPageSummary;
         private System.Windows.Forms.ListView listViewHistory;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeaderCount;
+        private System.Windows.Forms.ColumnHeader columnHeaderDetails;
+        private System.Windows.Forms.ColumnHeader columnHeaderSource;
         private System.Windows.Forms.ToolStripButton btnClearHistory;
         private System.Windows.Forms.ToolStripMenuItem clearHistoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.ComponentModel.BackgroundWorker bgWorkerUnbind;
     }
 }
 
