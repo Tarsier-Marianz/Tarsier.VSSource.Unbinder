@@ -198,6 +198,7 @@
             this.optionsToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("optionsToolStripMenuItem1.Image")));
             this.optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
             this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(222, 22);
+            this.optionsToolStripMenuItem1.Tag = "OPTIONS";
             this.optionsToolStripMenuItem1.Text = "Options";
             this.optionsToolStripMenuItem1.Click += new System.EventHandler(this.MenuItems_Click);
             // 
@@ -258,7 +259,7 @@
             this.clearHistoryToolStripMenuItem.Name = "clearHistoryToolStripMenuItem";
             this.clearHistoryToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.clearHistoryToolStripMenuItem.Tag = "CLEAR_HISTORY";
-            this.clearHistoryToolStripMenuItem.Text = "Clear History";
+            this.clearHistoryToolStripMenuItem.Text = "Clear Summary";
             this.clearHistoryToolStripMenuItem.Click += new System.EventHandler(this.MenuItems_Click);
             // 
             // clearLogsToolStripMenuItem
@@ -406,12 +407,12 @@
             this.btnFolder,
             this.toolStripSeparator6,
             this.btnRefreshProfile,
+            this.btnClearHistory,
+            this.btnClearLogs,
             this.toolStripLabel2,
             this.toolStripSeparator3,
             this.btnUnbind,
             this.toolStripLabel1,
-            this.btnClearHistory,
-            this.btnClearLogs,
             this.toolStripSeparator8,
             this.toolStripButton1,
             this.btnOptions,
@@ -458,7 +459,7 @@
             this.btnRefreshProfile.Name = "btnRefreshProfile";
             this.btnRefreshProfile.Size = new System.Drawing.Size(23, 22);
             this.btnRefreshProfile.Tag = "REFRESH";
-            this.btnRefreshProfile.Text = "Refresh Profile";
+            this.btnRefreshProfile.Text = "Reload Workspace";
             this.btnRefreshProfile.Click += new System.EventHandler(this.Buttons_Click);
             // 
             // toolStripLabel2
@@ -497,7 +498,7 @@
             this.btnClearHistory.Name = "btnClearHistory";
             this.btnClearHistory.Size = new System.Drawing.Size(23, 22);
             this.btnClearHistory.Tag = "CLEAR_HISTORY";
-            this.btnClearHistory.Text = "Clear History";
+            this.btnClearHistory.Text = "Clear Summary";
             this.btnClearHistory.Click += new System.EventHandler(this.Buttons_Click);
             // 
             // btnClearLogs
@@ -629,9 +630,9 @@
             this.label3.ForeColor = System.Drawing.Color.Gray;
             this.label3.Location = new System.Drawing.Point(3, 6);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(162, 13);
+            this.label3.Size = new System.Drawing.Size(183, 13);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Double click profile item to open.";
+            this.label3.Text = "Double click workspace item to open.";
             // 
             // panelProfileTop
             // 

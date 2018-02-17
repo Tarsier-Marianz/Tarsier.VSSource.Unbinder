@@ -89,6 +89,7 @@
     <Compile Include="Constants\Database.cs" />
     <Compile Include="Constants\Titles.cs" />
     <Compile Include="Controllers\Logs.cs" />
+    <Compile Include="Controllers\RidSources.cs" />
     <Compile Include="Controllers\Workspaces.cs" />
     <Compile Include="Controllers\UnbindHistory.cs" />
     <Compile Include="Forms\AboutForm.cs">

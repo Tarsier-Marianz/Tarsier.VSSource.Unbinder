@@ -105,6 +105,7 @@ namespace Tarsier.VSSource.Unbinder {
                     break;
                 case "REFRESH":
                     InitWorkspace();
+                    InitHistory(_workspaceTable);
                     break;
                 case "UNBIND":
                     Unbind();
@@ -215,9 +216,10 @@ namespace Tarsier.VSSource.Unbinder {
                         Comment = string.Empty
                     };
                 }
-                _workspaceTable = _selectedWorkspace.WorkspaceTable;
+                _workspaceTable = _selectedWorkspace.WorkspaceTable; 
                 _workspacse.Add(_selectedWorkspace);
                 InitHistory(_workspaceTable);
+                menuItemUnbind.Text = btnUnbind.Text = "Unbind " + _selectedWorkspace.Name;
             }
         }
         private void AddFiles(AddFile file) {
@@ -313,6 +315,9 @@ namespace Tarsier.VSSource.Unbinder {
                 listViewFiles.Items.Clear();
                 lblProfileCaption.Text =
                 lblStatus.Text = "Scanning...";
+                if(_selectedWorkspace != null) {
+                    menuItemUnbind.Text = btnUnbind.Text = "Unbind " + _selectedWorkspace.Name;
+                }
                 _scannedFiles = 0;
                 _validFiles = 0;
                 _isLoading = progressBar.Visible = true;
@@ -531,7 +536,9 @@ namespace Tarsier.VSSource.Unbinder {
             ToolBarMenusVisibility(true);
             _history.Add(_unbinder.SourceSummary); //Add source summary
             InitHistory(_workspaceTable);
+
             _unbinder.UnbindProgress -= UnbindProgress;
+            _logs.Add(string.Format("Unbinding {0} files from folder {1}.", _sourceEntries.Count, _folder), "Events", "Unbind "+_selectedWorkspace.Name, ParseMessageType.Success);
         }
 
     }

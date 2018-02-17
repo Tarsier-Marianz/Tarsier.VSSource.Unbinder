@@ -139,8 +139,10 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
                 List<Workspace> profs = GetProfiles();
                 if(profs.Count > 0) {
                     foreach(Workspace p in profs) {
-                        list.Items.Add(new ParseMessageEventArgs(ParseMessageType.Profile, p.Name, p.Directory, "profile" + p.ID, p.LastDateUnbind));
+                        list.Items.Add(new ParseMessageEventArgs(ParseMessageType.Profile, p.Name, p.Directory, "workspace" + p.ID, p.LastDateUnbind));
                     }
+                } else {
+                    list.Items.Add(new ParseMessageEventArgs(ParseMessageType.Info, "No workspace found!", "Add folder to create new workspace.", "0", string.Empty));
                 }
                 list.Invalidate();
             }
