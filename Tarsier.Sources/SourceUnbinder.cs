@@ -65,7 +65,6 @@ namespace Tarsier.Sources {
                 if(entry == null) {
                     throw new ArgumentException("Internal Error: ModifyProjectFile called with a file that is not a solution");
                 }
-                //AddLog("Solutions", String.Format("Modifying Solution: {0}", _truncatePath ? filename.TruncatePath() : filename));
                 string filename = entry.Info.FullName;
 
                 // Remove the read-only flag
@@ -103,7 +102,6 @@ namespace Tarsier.Sources {
                         // No handle every other line
                         // Basically as long as we are not in a source control section
                         // then that line can be copied to output
-
                         if(!in_sourcecontrol_section) {
                             output_lines.Add(line);
                         }
@@ -131,12 +129,11 @@ namespace Tarsier.Sources {
                     throw new ArgumentException("Internal Error: ModifyProjectFile called with a file that is not a project");
                 }
                 string filename = entry.Info.FullName;
-
                 // Load the Project file
                 XDocument doc = null;
                 Encoding encoding = new UTF8Encoding(false);
                 using(StreamReader reader = new StreamReader(filename, encoding)) {
-                    doc = System.Xml.Linq.XDocument.Load(reader);
+                    doc = XDocument.Load(reader);
                     encoding = reader.CurrentEncoding;
                 }
 
@@ -190,7 +187,7 @@ namespace Tarsier.Sources {
         }
 
         /// <summary>
-        /// 
+        /// Delete source control file
         /// </summary>
         /// <param name="entry"></param>
         public bool DeleteSourceFile(FileEntry entry) {
