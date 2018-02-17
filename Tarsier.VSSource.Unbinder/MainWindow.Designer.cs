@@ -1005,7 +1005,8 @@
             this.imgSources.Images.SetKeyName(1, "vs-csproj.png");
             this.imgSources.Images.SetKeyName(2, "vs-vbproj.png");
             this.imgSources.Images.SetKeyName(3, "vs-source.png");
-            this.imgSources.Images.SetKeyName(4, "vs-project.png");
+            this.imgSources.Images.SetKeyName(4, "blue-folder-broken.png");
+            this.imgSources.Images.SetKeyName(5, "vs-project.png");
             // 
             // MainWindow
             // 

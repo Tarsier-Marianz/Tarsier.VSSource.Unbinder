@@ -132,18 +132,8 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
             }
         }
 
-        private int GeImageIndex(string source) {
-            if(source.Equals("solution")) {
-                return 0;
-            } else if(source.Equals("csproj")) {
-                return 1;
-            } else if(source.Equals("vbproj")) {
-                return 2;
-            } else if(source.Equals("vssource")) {
-                return 3;
-            }else {
-                return 4;
-            }
+        private string GeImageKey(string source) {
+            return string.Format("vs-{0}", source).Replace("vs-vs", "vs");
         }
     }
 }
