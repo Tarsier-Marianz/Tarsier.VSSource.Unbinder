@@ -56,9 +56,6 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ionic.Zip">
-      <HintPath>..\..\..\..\..\Downloads\Compressed\DotNetZipLib-DevKit-v1.9\Tools\Ionic.Zip.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Modem.Pullout.Manager.2015\Unvalidated.Transfer\bin\x86\Release\Newtonsoft.Json.dll</HintPath>
@@ -110,12 +107,6 @@
     <Compile Include="Forms\Splash.Designer.cs">
       <DependentUpon>Splash.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UploadToServer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\UploadToServer.Designer.cs">
-      <DependentUpon>UploadToServer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Helpers\Dialogs.cs" />
     <Compile Include="Enums\AddFile.cs" />
@@ -158,9 +149,6 @@
     <EmbeddedResource Include="Forms\Splash.resx">
       <DependentUpon>Splash.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UploadToServer.resx">
-      <DependentUpon>UploadToServer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,17 +174,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Rebex.Net.Sftp.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Rebex.Net.Ssh.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Include="Resources\exclamation-red.png" />
     <None Include="Resources\folder_ok.png" />
-    <EmbeddedResource Include="Ionic.Zip.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <EmbeddedResource Include="Newtonsoft.Json.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

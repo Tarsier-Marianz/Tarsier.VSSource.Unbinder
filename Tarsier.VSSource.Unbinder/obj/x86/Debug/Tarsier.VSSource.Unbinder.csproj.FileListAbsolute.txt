@@ -1,6 +1,4 @@
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Debug\SQLite.Interop.dll
-G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Debug\Rebex.Net.Sftp.dll
-G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Debug\Rebex.Net.Ssh.dll
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Debug\Newtonsoft.Json.dll
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Debug\System.Data.SQLite.dll
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Debug\Tarsier.VSSource.Unbinder.exe
@@ -27,7 +25,6 @@ G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\obj\x86\Debug\Tarsier.VSSource.Unbinder.ConfigServerForm.resources
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\obj\x86\Debug\Tarsier.VSSource.Unbinder.Forms.HelpForm.resources
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\obj\x86\Debug\Tarsier.VSSource.Unbinder.Forms.Splash.resources
-G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\obj\x86\Debug\Tarsier.VSSource.Unbinder.Forms.UploadToServer.resources
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\obj\x86\Debug\Tarsier.VSSource.Unbinder.MainWindow.resources
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\obj\x86\Debug\Tarsier.VSSource.Unbinder.Properties.Resources.resources
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\obj\x86\Debug\Tarsier.VSSource.Unbinder.csproj.GenerateResource.Cache
