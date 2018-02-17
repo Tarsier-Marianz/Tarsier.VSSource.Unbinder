@@ -67,12 +67,12 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
         public void Add(History h) {
             Dictionary<string, object> data = new Dictionary<string, object>();
             
-            string timeUploaded = string.IsNullOrEmpty(h.Details) ? DateTime.Now.ToString("yyyy-mm-dd hh:mm:ss tt") : h.Details;
-            string code=(h.SourceType + timeUploaded).RemoveNonAlphaNumeric().ToLower();
+            string details = string.IsNullOrEmpty(h.Details) ? DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss tt") : h.Details;
+            string code=(h.SourceType + DateTime.Now.ToString("yyyyMMdd")).RemoveNonAlphaNumeric().ToLower();
             data.Add("SourceCount", h.SourceCount);
             data.Add("Code", code);
             data.Add("SourceType", h.SourceType);
-            data.Add("Details", timeUploaded);
+            data.Add("Details", details);
             if(sqlite.IsExist(defaultTable, "Code", code.ToStringType())) {
                 sqlite.Update(defaultTable, data, "Code", code);
             } else {
@@ -86,7 +86,7 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
                     History h = new History() {
                         SourceType = property.Name,
                         SourceCount = property.Value.ToSafeInteger(),
-                        Details = DateTime.Now.ToString("yyyy-mm-dd hh:mm:ss tt")
+                        Details = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss tt")
                     };
                     Add(h);
                 }
@@ -97,7 +97,7 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
             if(pro != null) {
                 History hist = new History() {
                     SourceCount = pro.FileCount,
-                    Details = DateTime.Now.ToString("yyyy-mm-dd hh:mm:ss tt")
+                    Details = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss tt")
                 };
                 Add(hist);
             }
@@ -115,7 +115,7 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
             List<History> histories = GetHistories();
             if(histories.Count > 0) {
                 foreach(History h in histories) {
-                    ListViewItem item = new ListViewItem(h.SourceType, 5);
+                    ListViewItem item = new ListViewItem(h.SourceType, GeImageIndex(h.SourceType.ToLower()));
                     item.UseItemStyleForSubItems = false;
                     item.SubItems.Add(h.SourceCount.ToSafeString());
                     item.SubItems.Add(h.Details);
@@ -132,5 +132,18 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
             }
         }
 
+        private int GeImageIndex(string source) {
+            if(source.Equals("solution")) {
+                return 0;
+            } else if(source.Equals("csproj")) {
+                return 1;
+            } else if(source.Equals("vbproj")) {
+                return 2;
+            } else if(source.Equals("vssource")) {
+                return 3;
+            }else {
+                return 4;
+            }
+        }
     }
 }

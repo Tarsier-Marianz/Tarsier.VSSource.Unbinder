@@ -112,6 +112,7 @@
             this.tmrCheck = new System.Windows.Forms.Timer(this.components);
             this.tipUploader = new System.Windows.Forms.ToolTip(this.components);
             this.bgWorkerUnbind = new System.ComponentModel.BackgroundWorker();
+            this.imgSources = new System.Windows.Forms.ImageList(this.components);
             this.menuStripUploader.SuspendLayout();
             this.statusStripUploader.SuspendLayout();
             this.toolStripUploader.SuspendLayout();
@@ -757,7 +758,7 @@
             this.listViewHistory.Location = new System.Drawing.Point(3, 3);
             this.listViewHistory.Name = "listViewHistory";
             this.listViewHistory.Size = new System.Drawing.Size(535, 196);
-            this.listViewHistory.SmallImageList = this.imageListInfo;
+            this.listViewHistory.SmallImageList = this.imgSources;
             this.listViewHistory.TabIndex = 1;
             this.listViewHistory.UseCompatibleStateImageBehavior = false;
             this.listViewHistory.View = System.Windows.Forms.View.Details;
@@ -996,6 +997,16 @@
             this.bgWorkerUnbind.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkerUnbind_ProgressChanged);
             this.bgWorkerUnbind.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerUnbind_RunWorkerCompleted);
             // 
+            // imgSources
+            // 
+            this.imgSources.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgSources.ImageStream")));
+            this.imgSources.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgSources.Images.SetKeyName(0, "vs-solution.png");
+            this.imgSources.Images.SetKeyName(1, "vs-csproj.png");
+            this.imgSources.Images.SetKeyName(2, "vs-vbproj.png");
+            this.imgSources.Images.SetKeyName(3, "vs-source.png");
+            this.imgSources.Images.SetKeyName(4, "vs-project.png");
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1136,6 +1147,7 @@
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.ComponentModel.BackgroundWorker bgWorkerUnbind;
+        private System.Windows.Forms.ImageList imgSources;
     }
 }
 
