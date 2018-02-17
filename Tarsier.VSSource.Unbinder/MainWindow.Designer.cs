@@ -1170,7 +1170,7 @@
             this.MainMenuStrip = this.menuStripUploader;
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "App Updates Uploader";
+            this.Text = "Tarsier VS Source Control Unbinder";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.UploadForm_Load);
             this.menuStripUploader.ResumeLayout(false);
