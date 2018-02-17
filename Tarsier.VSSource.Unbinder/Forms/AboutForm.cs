@@ -1,11 +1,11 @@
 ﻿
 using Newtonsoft.Json;
-using Rebex.Net;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -35,9 +35,6 @@ namespace Tarsier.VSSource.Unbinder.Forms {
             var asms = new List<Assembly>();
             asms.Add(typeof(JsonConvert).Assembly);
             asms.Add(typeof(SQLiteConnection).Assembly);
-            asms.Add(typeof(Sftp).Assembly);
-            asms.Add(typeof(SshCipher).Assembly);
-            //asms.Add(typeof(ZipFile).Assembly);
 
             foreach(var asm in asms) {
                 var item = new ListViewItem(asm.GetName().Name);
@@ -59,5 +56,13 @@ namespace Tarsier.VSSource.Unbinder.Forms {
                 LibsListView.Items.Add(item);
             }
         }
+
+        private void Link_Click(object sender, EventArgs e) {
+            PictureBox p = sender as PictureBox;
+            if(p != null) {
+                Process.Start(p.Tag.ToSafeString());
+            }
+        }
+        
     }
 }

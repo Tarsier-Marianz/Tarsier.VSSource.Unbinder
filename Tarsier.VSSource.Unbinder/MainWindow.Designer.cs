@@ -30,6 +30,11 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemFiles = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemFolder = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
+            this.ridFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
+            this.addExtensionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.addFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
@@ -56,18 +61,21 @@
             this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.lblStatusFile = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripUploader = new System.Windows.Forms.ToolStrip();
+            this.btnUnbind = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAddFiles = new System.Windows.Forms.ToolStripButton();
             this.btnFolder = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.btnRefreshProfile = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnUnbind = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnRidSourceExt = new System.Windows.Forms.ToolStripButton();
+            this.btnRidSourceFolder = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.btnClearHistory = new System.Windows.Forms.ToolStripButton();
             this.btnClearLogs = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.btnOptions = new System.Windows.Forms.ToolStripButton();
             this.btnHelp = new System.Windows.Forms.ToolStripButton();
             this.btnExit = new System.Windows.Forms.ToolStripButton();
@@ -108,6 +116,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lblScannedFiles = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.tabPageRidFiles = new System.Windows.Forms.TabPage();
+            this.listViewRids = new System.Windows.Forms.ListView();
+            this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label4 = new System.Windows.Forms.Label();
             this.tabPageLogs = new System.Windows.Forms.TabPage();
             this.listLogs = new Tarsier.UI.MessageListBox();
             this.bgWorker = new System.ComponentModel.BackgroundWorker();
@@ -135,6 +148,7 @@
             this.tabControlDetails.SuspendLayout();
             this.tabPageProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxVersionCompare)).BeginInit();
+            this.tabPageRidFiles.SuspendLayout();
             this.tabPageLogs.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -157,6 +171,11 @@
             this.toolStripSeparator5,
             this.menuItemFiles,
             this.menuItemFolder,
+            this.toolStripSeparator12,
+            this.ridFilesToolStripMenuItem,
+            this.toolStripSeparator13,
+            this.addExtensionToolStripMenuItem1,
+            this.addFolderToolStripMenuItem,
             this.toolStripSeparator1,
             this.optionsToolStripMenuItem1,
             this.toolStripSeparator9,
@@ -187,6 +206,43 @@
             this.menuItemFolder.Tag = "ADD_FOLDER";
             this.menuItemFolder.Text = "Add Workspace from Folder";
             this.menuItemFolder.Click += new System.EventHandler(this.MenuItems_Click);
+            // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(219, 6);
+            // 
+            // ridFilesToolStripMenuItem
+            // 
+            this.ridFilesToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.ridFilesToolStripMenuItem.Enabled = false;
+            this.ridFilesToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ridFilesToolStripMenuItem.Name = "ridFilesToolStripMenuItem";
+            this.ridFilesToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.ridFilesToolStripMenuItem.Text = "Rid Source";
+            // 
+            // toolStripSeparator13
+            // 
+            this.toolStripSeparator13.Name = "toolStripSeparator13";
+            this.toolStripSeparator13.Size = new System.Drawing.Size(219, 6);
+            // 
+            // addExtensionToolStripMenuItem1
+            // 
+            this.addExtensionToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("addExtensionToolStripMenuItem1.Image")));
+            this.addExtensionToolStripMenuItem1.Name = "addExtensionToolStripMenuItem1";
+            this.addExtensionToolStripMenuItem1.Size = new System.Drawing.Size(222, 22);
+            this.addExtensionToolStripMenuItem1.Tag = "SOURCE_EXT";
+            this.addExtensionToolStripMenuItem1.Text = "   Add Extension";
+            this.addExtensionToolStripMenuItem1.Click += new System.EventHandler(this.MenuItems_Click);
+            // 
+            // addFolderToolStripMenuItem
+            // 
+            this.addFolderToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("addFolderToolStripMenuItem.Image")));
+            this.addFolderToolStripMenuItem.Name = "addFolderToolStripMenuItem";
+            this.addFolderToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.addFolderToolStripMenuItem.Tag = "SOURCE_FOLDER";
+            this.addFolderToolStripMenuItem.Text = "   Add Folder";
+            this.addFolderToolStripMenuItem.Click += new System.EventHandler(this.MenuItems_Click);
             // 
             // toolStripSeparator1
             // 
@@ -403,18 +459,21 @@
             // toolStripUploader
             // 
             this.toolStripUploader.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnUnbind,
+            this.toolStripLabel2,
+            this.toolStripSeparator3,
             this.btnAddFiles,
             this.btnFolder,
             this.toolStripSeparator6,
             this.btnRefreshProfile,
+            this.toolStripSeparator10,
+            this.btnRidSourceExt,
+            this.btnRidSourceFolder,
+            this.toolStripSeparator11,
             this.btnClearHistory,
             this.btnClearLogs,
-            this.toolStripLabel2,
-            this.toolStripSeparator3,
-            this.btnUnbind,
             this.toolStripLabel1,
             this.toolStripSeparator8,
-            this.toolStripButton1,
             this.btnOptions,
             this.btnHelp,
             this.btnExit});
@@ -423,6 +482,28 @@
             this.toolStripUploader.Size = new System.Drawing.Size(759, 25);
             this.toolStripUploader.TabIndex = 4;
             this.toolStripUploader.Text = "toolStrip1";
+            // 
+            // btnUnbind
+            // 
+            this.btnUnbind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnUnbind.Image = ((System.Drawing.Image)(resources.GetObject("btnUnbind.Image")));
+            this.btnUnbind.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnUnbind.Name = "btnUnbind";
+            this.btnUnbind.Size = new System.Drawing.Size(23, 22);
+            this.btnUnbind.Tag = "UNBIND";
+            this.btnUnbind.Text = "Unbind";
+            this.btnUnbind.Click += new System.EventHandler(this.Buttons_Click);
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(10, 22);
+            this.toolStripLabel2.Text = " ";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // btnAddFiles
             // 
@@ -462,33 +543,37 @@
             this.btnRefreshProfile.Text = "Reload Workspace";
             this.btnRefreshProfile.Click += new System.EventHandler(this.Buttons_Click);
             // 
-            // toolStripLabel2
+            // toolStripSeparator10
             // 
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(25, 22);
-            this.toolStripLabel2.Text = "      ";
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripSeparator3
+            // btnRidSourceExt
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.btnRidSourceExt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRidSourceExt.Image = ((System.Drawing.Image)(resources.GetObject("btnRidSourceExt.Image")));
+            this.btnRidSourceExt.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRidSourceExt.Name = "btnRidSourceExt";
+            this.btnRidSourceExt.Size = new System.Drawing.Size(23, 22);
+            this.btnRidSourceExt.Tag = "SOURCE_EXT";
+            this.btnRidSourceExt.Text = "Add Extension source";
+            this.btnRidSourceExt.Click += new System.EventHandler(this.Buttons_Click);
             // 
-            // btnUnbind
+            // btnRidSourceFolder
             // 
-            this.btnUnbind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnUnbind.Image = ((System.Drawing.Image)(resources.GetObject("btnUnbind.Image")));
-            this.btnUnbind.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnUnbind.Name = "btnUnbind";
-            this.btnUnbind.Size = new System.Drawing.Size(23, 22);
-            this.btnUnbind.Tag = "UNBIND";
-            this.btnUnbind.Text = "Unbind";
-            this.btnUnbind.Click += new System.EventHandler(this.Buttons_Click);
+            this.btnRidSourceFolder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRidSourceFolder.Image = ((System.Drawing.Image)(resources.GetObject("btnRidSourceFolder.Image")));
+            this.btnRidSourceFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRidSourceFolder.Name = "btnRidSourceFolder";
+            this.btnRidSourceFolder.Size = new System.Drawing.Size(23, 22);
+            this.btnRidSourceFolder.Tag = "SOURCE_FOLDER";
+            this.btnRidSourceFolder.Text = "Add Folder source";
+            this.btnRidSourceFolder.Click += new System.EventHandler(this.Buttons_Click);
             // 
-            // toolStripLabel1
+            // toolStripSeparator11
             // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(40, 22);
-            this.toolStripLabel1.Text = "           ";
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(6, 25);
             // 
             // btnClearHistory
             // 
@@ -512,21 +597,16 @@
             this.btnClearLogs.Text = "Clear Logs";
             this.btnClearLogs.Click += new System.EventHandler(this.Buttons_Click);
             // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(19, 22);
+            this.toolStripLabel1.Text = "    ";
+            // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Tag = "SERVER_CONFIG";
-            this.toolStripButton1.Text = "Config Server";
-            this.toolStripButton1.Click += new System.EventHandler(this.Buttons_Click);
             // 
             // btnOptions
             // 
@@ -801,6 +881,8 @@
             this.imgSources.Images.SetKeyName(4, "vs-unknown.png");
             this.imgSources.Images.SetKeyName(5, "vs-project.png");
             this.imgSources.Images.SetKeyName(6, "vs-profile.png");
+            this.imgSources.Images.SetKeyName(7, "plugin.png");
+            this.imgSources.Images.SetKeyName(8, "folder--arrow.png");
             // 
             // imageListInfo
             // 
@@ -815,6 +897,7 @@
             this.imageListInfo.Images.SetKeyName(6, "application-profile.png");
             this.imageListInfo.Images.SetKeyName(7, "bug--minus.png");
             this.imageListInfo.Images.SetKeyName(8, "vs-profile.png");
+            this.imageListInfo.Images.SetKeyName(9, "flag--exclamation.png");
             // 
             // panelFilesTop
             // 
@@ -838,6 +921,7 @@
             // tabControlDetails
             // 
             this.tabControlDetails.Controls.Add(this.tabPageProfile);
+            this.tabControlDetails.Controls.Add(this.tabPageRidFiles);
             this.tabControlDetails.Controls.Add(this.tabPageLogs);
             this.tabControlDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlDetails.ImageList = this.imageListInfo;
@@ -962,6 +1046,58 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Scanned Files:";
             // 
+            // tabPageRidFiles
+            // 
+            this.tabPageRidFiles.Controls.Add(this.listViewRids);
+            this.tabPageRidFiles.Controls.Add(this.label4);
+            this.tabPageRidFiles.ImageIndex = 9;
+            this.tabPageRidFiles.Location = new System.Drawing.Point(4, 23);
+            this.tabPageRidFiles.Name = "tabPageRidFiles";
+            this.tabPageRidFiles.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageRidFiles.Size = new System.Drawing.Size(541, 133);
+            this.tabPageRidFiles.TabIndex = 2;
+            this.tabPageRidFiles.Text = "Rid Sources";
+            this.tabPageRidFiles.UseVisualStyleBackColor = true;
+            // 
+            // listViewRids
+            // 
+            this.listViewRids.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewRids.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderName,
+            this.columnHeaderType});
+            this.listViewRids.FullRowSelect = true;
+            this.listViewRids.LargeImageList = this.imageList32;
+            this.listViewRids.Location = new System.Drawing.Point(2, 24);
+            this.listViewRids.Name = "listViewRids";
+            this.listViewRids.Size = new System.Drawing.Size(535, 104);
+            this.listViewRids.SmallImageList = this.imgSources;
+            this.listViewRids.TabIndex = 2;
+            this.listViewRids.UseCompatibleStateImageBehavior = false;
+            this.listViewRids.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeaderName
+            // 
+            this.columnHeaderName.Text = "Name";
+            this.columnHeaderName.Width = 240;
+            // 
+            // columnHeaderType
+            // 
+            this.columnHeaderType.Text = "Type";
+            this.columnHeaderType.Width = 150;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.DimGray;
+            this.label4.Location = new System.Drawing.Point(8, 6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(433, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "All folders and files with extension below will be deleted during source unbindin" +
+    "g if found.";
+            // 
             // tabPageLogs
             // 
             this.tabPageLogs.Controls.Add(this.listLogs);
@@ -1065,6 +1201,8 @@
             this.tabPageProfile.ResumeLayout(false);
             this.tabPageProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxVersionCompare)).EndInit();
+            this.tabPageRidFiles.ResumeLayout(false);
+            this.tabPageRidFiles.PerformLayout();
             this.tabPageLogs.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1111,7 +1249,6 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripButton btnHelp;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton btnOptions;
         private System.ComponentModel.BackgroundWorker bgWorker;
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
@@ -1162,6 +1299,20 @@
         private System.ComponentModel.BackgroundWorker bgWorkerUnbind;
         private System.Windows.Forms.ImageList imgSources;
         private System.Windows.Forms.ToolStripMenuItem clearWorkspaceToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabPageRidFiles;
+        private System.Windows.Forms.ListView listViewRids;
+        private System.Windows.Forms.ColumnHeader columnHeaderName;
+        private System.Windows.Forms.ColumnHeader columnHeaderType;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolStripMenuItem ridFilesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ToolStripButton btnRidSourceExt;
+        private System.Windows.Forms.ToolStripButton btnRidSourceFolder;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
+        private System.Windows.Forms.ToolStripMenuItem addExtensionToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem addFolderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
     }
 }
 

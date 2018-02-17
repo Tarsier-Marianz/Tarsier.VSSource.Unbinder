@@ -28,12 +28,14 @@ namespace Tarsier.VSSource.Unbinder {
         private SourceUnbinder _unbinder = new SourceUnbinder();
         private SourceControlAnalyzer _controlAnalyzer = new SourceControlAnalyzer();
         private List<FileEntry> _sourceEntries = new List<FileEntry>();
+        private List<RidSource> _listSources = new List<RidSource>();
+        private List<FileInfo> _filesToRid = new List<FileInfo>();
         private IconListManager _iconListManager;
         private Workspaces _workspacse;
         private UnbindHistory _history;
+        private RidSources _ridSources;
         private Logs _logs;
         private Workspace _selectedWorkspace = null;
-        private History _selectedHistory = null;
         private AddFile _loadFile = AddFile.FILES;
 
         private string[] _files;
@@ -46,7 +48,6 @@ namespace Tarsier.VSSource.Unbinder {
         private bool _autoUnBind = true;
         private bool _truncatePath = false;
         private bool _isLoading = false;
-        private int _fileIndex = 0;
         private int _validFiles = 0;
         private int _scannedFiles = 0;
 
@@ -75,9 +76,12 @@ namespace Tarsier.VSSource.Unbinder {
         private void InitWorkspace() {
             _workspacse = new Workspaces(Database.WORKSPACES);
             _logs = new Logs(Database.WORKSPACES);
+            _ridSources = new RidSources(Database.WORKSPACES);
             workspaceListBox.Items.Clear();
             _workspacse.Initialize(workspaceListBox);
             _logs.Initialize(listLogs);
+            _ridSources.Initialize(listViewRids);
+            _listSources = _ridSources.GetSources();
 
         }
         private void InitHistory(string profileName) {
@@ -180,6 +184,21 @@ namespace Tarsier.VSSource.Unbinder {
                         }
                     }
                     break;
+                case "SOURCE_EXT":
+                case "SOURCE_FOLDER":
+                    using(SourceForm s = new SourceForm(tag)) {
+                        if(s.ShowDialog().Equals(DialogResult.OK)) {
+                            string extension = s.SourceName.StartsWith(".") ? s.SourceName : "." + s.SourceName;
+                            RidSource rs = new RidSource() {
+                                Name = (tag.Equals("SOURCE_EXT")) ? extension : s.SourceName,
+                                Type = (tag.Equals("SOURCE_EXT")) ? "Extension" : "Folder"
+                            };
+                            _ridSources.Add(rs);
+                            _ridSources.Initialize(listViewRids);
+                            _listSources = _ridSources.GetSources();
+                        }
+                    }
+                    break;
                 default:
                     break;
             }
@@ -196,7 +215,6 @@ namespace Tarsier.VSSource.Unbinder {
             listViewFiles.Items.Clear();
             listViewHistory.Items.Clear();
             _selectedWorkspace = null;
-            _selectedHistory = null;
             _files = null;
             _scannedFiles = 0;
             _validFiles = 0;
@@ -252,7 +270,7 @@ namespace Tarsier.VSSource.Unbinder {
         private void Unbind() {
             if(_isLoading) { return; } //do nothing if still loading
             if(_sourceEntries.Count > 0) {
-                UpdateProgress(_sourceEntries.Count, true);
+                UpdateProgress(_sourceEntries.Count+_filesToRid.Count, true);
                 _unbinder.UnbindProgress += UnbindProgress;
                 if(!bgWorkerUnbind.IsBusy) {
                     lblProfileCaption.Text =
@@ -397,6 +415,7 @@ namespace Tarsier.VSSource.Unbinder {
                 FileInfo info = e.UserState as FileInfo;
                 if(info != null) {
                     lblStatusFile.Text = info.Name;
+
                     FileEntry entry = _controlAnalyzer.ValidateSource(info);
                     if(entry != null) {
                         _sourceEntries.Add(entry);
@@ -406,6 +425,12 @@ namespace Tarsier.VSSource.Unbinder {
                             }
                         }
                         _validFiles++;
+                    }
+                    // Check all rources to get rid
+                    foreach(RidSource rs in _listSources) {
+                        if(info.Name.EndsWith(rs.Name)) {
+                            _filesToRid.Add(info);
+                        }
                     }
                 }
             }
@@ -511,6 +536,13 @@ namespace Tarsier.VSSource.Unbinder {
                 bgWorkerUnbind.ReportProgress(i, entry);
                 i++;
             }
+            foreach(FileInfo fileRid in _filesToRid) {
+                if(File.Exists(fileRid.FullName)) {
+                    File.Delete(fileRid.FullName);
+                }
+                bgWorkerUnbind.ReportProgress(i);
+                i++;
+            }
         }
 
         private void bgWorkerUnbind_ProgressChanged(object sender, ProgressChangedEventArgs e) {
@@ -538,8 +570,10 @@ namespace Tarsier.VSSource.Unbinder {
             InitHistory(_workspaceTable);
 
             _unbinder.UnbindProgress -= UnbindProgress;
-            _logs.Add(string.Format("Unbinding {0} files from folder {1}.", _sourceEntries.Count, _folder), "Events", "Unbind "+_selectedWorkspace.Name, ParseMessageType.Success);
+            _logs.Add(string.Format("Deleting {0} files from folder {1}.", _filesToRid, _folder), "Events", "Delete Files", ParseMessageType.Success);
+            _logs.Add(string.Format("Unbinding {0} files from folder {1}.", _sourceEntries.Count, _folder), "Events", "Unbind " + _selectedWorkspace.Name, ParseMessageType.Success);
         }
+
 
     }
 }

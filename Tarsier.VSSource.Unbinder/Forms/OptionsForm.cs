@@ -25,23 +25,6 @@ namespace Tarsier.VSSource.Unbinder {
             chkEnableIncludeFile.Checked = RegConfig.Get<bool>("EnableIncludeFile");
             chkAutoUnbind.Checked = RegConfig.Get<bool>("AutoUnbind");
             chkAutoSaveProfile.Checked = RegConfig.Get<bool>("AutoSaveProfile");
-            txtHostname.Text = RegConfig.Get<string>("Hostname");
-            txtRootPath.Text = RegConfig.Get<string>("RootPath");
-            UploadCredentials credential = RegConfig.Get<UploadCredentials>("Credentials");
-            if(credential != null) {
-                txtUsername.Text = credential.Username;
-                txtPassword.Text = SimpleEncryption.Decrypt( credential.Password);
-            }
-        }
-
-        private void SaveConfig() {
-            RegConfig.Set<string>("RootPath", Elements.TrimRemotePath(txtRootPath.Text.Trim()));
-            RegConfig.Set<string>("Hostname", txtHostname.Text.Trim());
-            UploadCredentials credential = new UploadCredentials() { Username = txtUsername.Text.Trim(), Password = SimpleEncryption.Encrypt( txtPassword.Text.Trim()) };
-            RegConfig.Set<UploadCredentials>("Credentials", credential);
-        }
-        private void btnApply_Click(object sender, EventArgs e) {
-            SaveConfig();
         }
 
         private void Checkboxes_CheckedChanged(object sender, EventArgs e) {

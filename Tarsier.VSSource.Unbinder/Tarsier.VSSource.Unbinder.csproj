@@ -63,12 +63,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Modem.Pullout.Manager.2015\Unvalidated.Transfer\bin\x86\Release\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Rebex.Net.Sftp">
-      <HintPath>Rebex\Rebex.Net.Sftp.dll</HintPath>
-    </Reference>
-    <Reference Include="Rebex.Net.Ssh">
-      <HintPath>Rebex\Rebex.Net.Ssh.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.105.2, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -104,11 +98,11 @@
     <Compile Include="Forms\HelpForm.Designer.cs">
       <DependentUpon>HelpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ProfileNameForm.cs">
+    <Compile Include="Forms\SourceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ProfileNameForm.Designer.cs">
-      <DependentUpon>ProfileNameForm.cs</DependentUpon>
+    <Compile Include="Forms\SourceForm.Designer.cs">
+      <DependentUpon>SourceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Splash.cs">
       <SubType>Form</SubType>
@@ -126,11 +120,11 @@
     <Compile Include="Helpers\Dialogs.cs" />
     <Compile Include="Enums\AddFile.cs" />
     <Compile Include="Enums\Filters.cs" />
-    <Compile Include="Forms\ConfigServerForm.cs">
+    <Compile Include="Forms\OptionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ConfigServerForm.Designer.cs">
-      <DependentUpon>ConfigServerForm.cs</DependentUpon>
+    <Compile Include="Forms\OptionsForm.Designer.cs">
+      <DependentUpon>OptionsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Elements.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
@@ -138,6 +132,7 @@
     <Compile Include="Helpers\ParseType.cs" />
     <Compile Include="Models\History.cs" />
     <Compile Include="Models\Log.cs" />
+    <Compile Include="Models\RidSource.cs" />
     <Compile Include="Models\Workspace.cs" />
     <Compile Include="Models\UploadCredentials.cs" />
     <Compile Include="MainWindow.cs">
@@ -151,14 +146,14 @@
     <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ConfigServerForm.resx">
-      <DependentUpon>ConfigServerForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\OptionsForm.resx">
+      <DependentUpon>OptionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HelpForm.resx">
       <DependentUpon>HelpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ProfileNameForm.resx">
-      <DependentUpon>ProfileNameForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\SourceForm.resx">
+      <DependentUpon>SourceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Splash.resx">
       <DependentUpon>Splash.cs</DependentUpon>
@@ -199,9 +194,6 @@
     </EmbeddedResource>
     <None Include="Resources\exclamation-red.png" />
     <None Include="Resources\folder_ok.png" />
-    <EmbeddedResource Include="Uploader.Database.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <EmbeddedResource Include="Ionic.Zip.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

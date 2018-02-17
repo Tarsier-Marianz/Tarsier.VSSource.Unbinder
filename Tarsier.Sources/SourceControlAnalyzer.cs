@@ -8,6 +8,7 @@ using Tarsier.Sources.Enumeration;
 namespace Tarsier.Sources {
     public class SourceControlAnalyzer {
         public SourceControlAnalyzer() { }
+        
         public FileEntry ValidateSource(FileInfo info) {
             FileType type = FileType.Unknown;
             string normalizedFilename = info.Name.ToLower();
@@ -34,6 +35,7 @@ namespace Tarsier.Sources {
                     Info = info,
                     Type = type
                 };
+               
             }
             return null;
         }

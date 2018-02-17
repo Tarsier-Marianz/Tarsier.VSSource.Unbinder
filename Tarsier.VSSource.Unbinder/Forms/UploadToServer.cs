@@ -2,7 +2,6 @@
 using Tarsier.VSSource.Unbinder.Helpers;
 using Tarsier.VSSource.Unbinder.Models;
 using Ionic.Zip;
-using Rebex.Net;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

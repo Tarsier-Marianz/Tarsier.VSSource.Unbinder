@@ -460,7 +460,15 @@ namespace Tarsier.Config {
             cmd.CommandText = string.Format("drop table if exists `{0}`", table);
             cmd.ExecuteNonQuery();
         }
-
+        public bool Delete(string table, string whereCondition) {
+            try {
+                cmd.CommandText = string.Format("delete from `{0}` where {1}", table, whereCondition);
+                cmd.ExecuteNonQuery();
+            } catch {
+                return false;
+            }
+            return true;
+        }
         public void UpdateTableStructure(string targetTable, SQLiteTable newStructure) {
             newStructure.TableName = targetTable + "_temp";
 

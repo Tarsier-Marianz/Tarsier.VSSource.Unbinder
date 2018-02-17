@@ -39,29 +39,16 @@
             this.chkAutoUnbind = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.chkAutoSaveProfile = new System.Windows.Forms.CheckBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pBoxVersionCompare = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtRootPath = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtHostname = new System.Windows.Forms.TextBox();
             this.imageListTab = new System.Windows.Forms.ImageList(this.components);
             this.btnApply = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.tabControlConfig.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBoxVersionCompare)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlConfig
             // 
             this.tabControlConfig.Controls.Add(this.tabPage1);
-            this.tabControlConfig.Controls.Add(this.tabPage2);
             this.tabControlConfig.ImageList = this.imageListTab;
             this.tabControlConfig.ItemSize = new System.Drawing.Size(71, 30);
             this.tabControlConfig.Location = new System.Drawing.Point(8, 12);
@@ -227,107 +214,13 @@
             this.chkAutoSaveProfile.UseVisualStyleBackColor = true;
             this.chkAutoSaveProfile.CheckedChanged += new System.EventHandler(this.Checkboxes_CheckedChanged);
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.pictureBox2);
-            this.tabPage2.Controls.Add(this.pBoxVersionCompare);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.txtRootPath);
-            this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Controls.Add(this.txtHostname);
-            this.tabPage2.ImageIndex = 2;
-            this.tabPage2.Location = new System.Drawing.Point(4, 34);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(376, 315);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Server Configuration";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(65, 133);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox2.TabIndex = 12;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pBoxVersionCompare
-            // 
-            this.pBoxVersionCompare.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pBoxVersionCompare.Image = ((System.Drawing.Image)(resources.GetObject("pBoxVersionCompare.Image")));
-            this.pBoxVersionCompare.Location = new System.Drawing.Point(65, 60);
-            this.pBoxVersionCompare.Name = "pBoxVersionCompare";
-            this.pBoxVersionCompare.Size = new System.Drawing.Size(16, 16);
-            this.pBoxVersionCompare.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pBoxVersionCompare.TabIndex = 11;
-            this.pBoxVersionCompare.TabStop = false;
-            // 
-            // label7
-            // 
-            this.label7.ForeColor = System.Drawing.Color.Gray;
-            this.label7.Location = new System.Drawing.Point(87, 133);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(210, 26);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Location where to save latest version of files.";
-            // 
-            // label6
-            // 
-            this.label6.ForeColor = System.Drawing.Color.Gray;
-            this.label6.Location = new System.Drawing.Point(87, 60);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(210, 42);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Host IP address or domain of the server.\r\n(e.g ): 192.168.0.2\r\n           yourdom" +
-    "ain.com";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 108);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Root Path:";
-            // 
-            // txtRootPath
-            // 
-            this.txtRootPath.Location = new System.Drawing.Point(90, 105);
-            this.txtRootPath.Name = "txtRootPath";
-            this.txtRootPath.Size = new System.Drawing.Size(261, 21);
-            this.txtRootPath.TabIndex = 3;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 39);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Hostname:";
-            // 
-            // txtHostname
-            // 
-            this.txtHostname.Location = new System.Drawing.Point(92, 36);
-            this.txtHostname.Name = "txtHostname";
-            this.txtHostname.Size = new System.Drawing.Size(259, 21);
-            this.txtHostname.TabIndex = 2;
-            // 
             // imageListTab
             // 
             this.imageListTab.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListTab.ImageStream")));
             this.imageListTab.TransparentColor = System.Drawing.Color.Transparent;
             this.imageListTab.Images.SetKeyName(0, "folder-network-horizontal-open.png");
             this.imageListTab.Images.SetKeyName(1, "gear.png");
-            this.imageListTab.Images.SetKeyName(2, "globe-network-ethernet.png");
-            this.imageListTab.Images.SetKeyName(3, "network-firewall.png");
-            this.imageListTab.Images.SetKeyName(4, "network-clouds.png");
+            this.imageListTab.Images.SetKeyName(2, "application-share.png");
             // 
             // btnApply
             // 
@@ -338,7 +231,6 @@
             this.btnApply.TabIndex = 0;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
-            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // button2
             // 
@@ -371,10 +263,6 @@
             this.tabControlConfig.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pBoxVersionCompare)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -384,13 +272,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chkAutoSaveProfile;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtRootPath;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtHostname;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label9;
@@ -404,7 +285,5 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.CheckBox chkTruncatePath;
         private System.Windows.Forms.ImageList imageListTab;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pBoxVersionCompare;
     }
 }
