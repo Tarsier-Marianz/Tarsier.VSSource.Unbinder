@@ -39,11 +39,8 @@ G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\obj\x86\Release\Tarsier.VSSource.Unbinder.exe
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\obj\x86\Release\Tarsier.VSSource.Unbinder.pdb
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Release\SQLite.Interop.dll
-G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Release\Rebex.Net.Sftp.dll
-G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Release\Rebex.Net.Ssh.dll
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Release\Newtonsoft.Json.dll
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Release\System.Data.SQLite.dll
-G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Release\Uploader.Database.ico
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Release\Tarsier.VSSource.Unbinder.exe
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Release\Tarsier.VSSource.Unbinder.pdb
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Release\Tarsier.Association.dll
@@ -52,8 +49,6 @@ G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Release\Tarsier.Regedit.dll
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Release\Tarsier.Security.dll
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Release\Tarsier.UI.dll
-G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Release\Rebex.Net.ProxySocket.dll
-G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Release\Rebex.Security.dll
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Release\Tarsier.Association.pdb
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Release\Tarsier.Security.pdb
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Release\Tarsier.Config.pdb
@@ -67,11 +62,10 @@ G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\obj\x86\Release\Tarsier.VSSource.Unbinder.Forms.AboutForm.resources
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\obj\x86\Release\Tarsier.VSSource.Unbinder.ConfigServerForm.resources
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\obj\x86\Release\Tarsier.VSSource.Unbinder.Forms.HelpForm.resources
-G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\obj\x86\Release\Tarsier.VSSource.Unbinder.Forms.ProfileNameForm.resources
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\obj\x86\Release\Tarsier.VSSource.Unbinder.Forms.Splash.resources
-G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\obj\x86\Release\Tarsier.VSSource.Unbinder.Forms.UploadToServer.resources
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\obj\x86\Release\Tarsier.VSSource.Unbinder.Properties.Resources.resources
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\obj\x86\Release\Tarsier.VSSource.Unbinder.csproj.GenerateResource.Cache
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\obj\x86\Release\Tarsier.VSSource.Unbinder.MainWindow.resources
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Release\Tarsier.Sources.dll
 G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\bin\x86\Release\Tarsier.Sources.pdb
+G:\Users\TARSIER\Documents\Visual Studio 2012\Projects\Tarsier.VSSource.Unbinder\Tarsier.VSSource.Unbinder\obj\x86\Release\Tarsier.VSSource.Unbinder.Forms.SourceForm.resources
