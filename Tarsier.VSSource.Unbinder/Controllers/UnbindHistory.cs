@@ -46,7 +46,19 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
             }
             return sqlite.GetDataTable(defaultTable);
         }
-
+        public bool ClearHistory(string table) {
+            try {
+                if(sqlite.IsTableExist(table)) {
+                    sqlite.DropTable(table);
+                    return true;
+                }
+            } catch {
+            }
+            return false;
+        }
+        public bool ClearHistory() {
+           return ClearHistory(defaultTable);
+        }
         public List<History> GetHistories() {
             List<History> profs = new List<History>();
             DataTable dt = GetDataTable(true);
@@ -115,11 +127,11 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
             List<History> histories = GetHistories();
             if(histories.Count > 0) {
                 foreach(History h in histories) {
-                    ListViewItem item = new ListViewItem(h.SourceType, GeImageIndex(h.SourceType.ToLower()));
+                    ListViewItem item = new ListViewItem(h.SourceType, GeImageKey(h.SourceType.ToLower()));
                     item.UseItemStyleForSubItems = false;
                     item.SubItems.Add(h.SourceCount.ToSafeString());
                     item.SubItems.Add(h.Details);
-                    item.SubItems[1].ForeColor = Color.DarkGray;
+                    item.SubItems[1].ForeColor = Color.DarkGreen;
                     item.SubItems[2].ForeColor = Color.Gray;
                     if(list.InvokeRequired) {
                         list.Invoke((MethodInvoker)delegate () {
@@ -133,7 +145,7 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
         }
 
         private string GeImageKey(string source) {
-            return string.Format("vs-{0}", source).Replace("vs-vs", "vs");
+            return string.Format("vs-{0}.png", source);
         }
     }
 }

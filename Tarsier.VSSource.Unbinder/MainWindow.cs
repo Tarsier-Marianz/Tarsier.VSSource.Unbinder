@@ -40,6 +40,7 @@ namespace Tarsier.VSSource.Unbinder {
         private string _intialDirectory = string.Empty;
         private string _directory = string.Empty;
         private string _folder = string.Empty;
+        private string _workspaceTable = string.Empty;
         private bool _executeNewWorkspace = false;
         private bool _automaticSaveWorkspace = true;
         private bool _autoUnBind = true;
@@ -81,17 +82,17 @@ namespace Tarsier.VSSource.Unbinder {
         }
         private void InitHistory(string profileName) {
             _history = new UnbindHistory(Database.HISTORY);
-            tabPageSummary.Text = "History";
+            tabPageSummary.Text = "Summary";
             if(!string.IsNullOrEmpty(profileName)) {
                 listViewHistory.Items.Clear();
                 _history.Initialize(listViewHistory, profileName);
-                tabPageSummary.Text = (listViewHistory.Items.Count > 0) ? string.Format("History [{0}]", listViewHistory.Items.Count) : "History";
+                tabPageSummary.Text = (listViewHistory.Items.Count > 0) ? string.Format("Summary [{0}]", listViewHistory.Items.Count) : "Summary";
             }
         }
         private void Action(string tag) {
             switch(tag) {
                 case "NEW_PROF":
-                    NewProfile();
+                    //NewProfile();
                     break;
                 case "SAVE_PROF":
                     SaveProfile();
@@ -147,6 +148,21 @@ namespace Tarsier.VSSource.Unbinder {
                     RegConfig.Set<bool>("Logs&Details", logsToolStripMenuItem.Checked);
                     splitContainer2.Panel2Collapsed = !logsToolStripMenuItem.Checked;
                     break;
+                case "CLEAR_WORKSPACE":
+                    if(_workspacse != null) {
+                        if(MessageBox.Show("Workspace will be deleted permanently!\nAre you sure you want to clear all workspace?", "Clear Workspace", MessageBoxButtons.YesNo, MessageBoxIcon.Question).Equals(DialogResult.Yes)) {
+
+                            List<Workspace> ws = _workspacse.GetProfiles();
+                            if(ws.Count > 0) {
+                                foreach(Workspace w in ws) {
+                                    _history.ClearHistory(w.Name.RemoveNonAlphaNumeric().ToLower());
+                                }
+                            }
+                            _workspacse.ClearWorkspaces();
+                            InitWorkspace();
+                        }
+                    }
+                    break;
                 case "CLEAR_LOGS":
                     if(_logs != null) {
                         if(MessageBox.Show("Logs will be deleted permanently!\nAre you sure you want to clear all logs?", "Clear Logs", MessageBoxButtons.YesNo, MessageBoxIcon.Question).Equals(DialogResult.Yes)) {
@@ -156,17 +172,22 @@ namespace Tarsier.VSSource.Unbinder {
                     }
                     break;
                 case "CLEAR_HISTORY":
-                    listViewHistory.Items.Clear();
+                    if(_selectedWorkspace != null) {
+                        if(MessageBox.Show("History will be deleted permanently!\nAre you sure you want to clear all history?", "Clear History", MessageBoxButtons.YesNo, MessageBoxIcon.Question).Equals(DialogResult.Yes)) {
+                            _history.ClearHistory();
+                            InitHistory(_selectedWorkspace.Name);
+                        }
+                    }
                     break;
                 default:
                     break;
             }
         }
-
+        
         private void NewProfile() {
             lblProfileCaption.Text = string.Empty;
             tabPageFiles.Text = "Files";
-            tabPageSummary.Text = "History";
+            tabPageSummary.Text = "Summary";
             lblStatus.Text = "Ready...";
             lblStatusFile.Text = string.Empty;
             progressBar.Visible = false;
@@ -181,46 +202,35 @@ namespace Tarsier.VSSource.Unbinder {
             Elements.ClearProfileDetails(tabPageProfile);
         }
 
+
         private void SaveProfile() {
             if(listViewFiles.Items.Count > 0) {
                 if(_selectedWorkspace == null) {
                     _selectedWorkspace = new Workspace() {
                         Name = _folder,
+                        WorkspaceTable = (_folder.RemoveNonAlphaNumeric() + _directory.RemoveNonAlphaNumeric().GetHashCode()).ToLower(),
                         FileCount = _scannedFiles,
                         ValidFiles = _validFiles,
                         Directory = _directory,
                         Comment = string.Empty
                     };
-                    _workspacse.Add(_selectedWorkspace);
-                } else {
-                    _workspacse.Add(_selectedWorkspace);
                 }
+                _workspaceTable = _selectedWorkspace.WorkspaceTable;
+                _workspacse.Add(_selectedWorkspace);
+                InitHistory(_workspaceTable);
             }
         }
-
         private void AddFiles(AddFile file) {
             _loadFile = file;
             if(file == AddFile.FILES) {
                 using(OpenFileDialog opd = new OpenFileDialog()) {
                     opd.Filter = Dialogs.GetFilters(Filters.SUPPORTED_FILES);
-                    opd.Multiselect = true;
+                    opd.Multiselect = false;
                     if(opd.ShowDialog().Equals(DialogResult.OK)) {
-                        _files = opd.FileNames;
-                        if(_files.Length > 1) {
-                            StartLoadFiles(true);
-                        }else {
-                            FileInfo info = new FileInfo(_files[0]);
-                            FileEntry entry = _controlAnalyzer.ValidateSource(info);
-                            if(entry != null) {
-                                _sourceEntries.Add(entry);
-                                AddFileList(info);
-                                if(_autoUnBind) {
-                                    if(_unbinder.UnbindEntry(entry)) {
-                                    }
-                                }
-                                _validFiles++;
-                            }
-                        }
+                        _directory = Path.GetDirectoryName(opd.FileName);
+                        _folder = Path.GetFileName(_directory);
+                        RegConfig.Set<string>("InitialDirectory", _directory);
+                        StartLoadFiles(true);
                     }
                 }
             } else {
@@ -367,13 +377,9 @@ namespace Tarsier.VSSource.Unbinder {
         }
 
         private void bgWorker_DoWork(object sender, DoWorkEventArgs e) {
-            if(_loadFile == AddFile.FILES) {
+            if(Directory.Exists(_directory)) {
+                _files = Directory.GetFiles(_directory, "*.*", SearchOption.AllDirectories);
                 LoadFiles(e);
-            } else {
-                if(Directory.Exists(_directory)) {
-                    _files = Directory.GetFiles(_directory, "*.*", SearchOption.AllDirectories);
-                    LoadFiles(e);
-                }
             }
         }
 
@@ -404,29 +410,27 @@ namespace Tarsier.VSSource.Unbinder {
         }
 
         private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
-            _unbinder.UnbindProgress -= UnbindProgress;
-            SetProfileDetails();
-            lblProfileCaption.Text = _selectedWorkspace.Name;
-            lblStatusFile.Text = (_truncatePath) ? _folder.TruncatePath() : _folder;
+            if(_autoUnBind) {
+                _unbinder.UnbindProgress -= UnbindProgress;
+            }
+           
+            SaveProfile();
+            InitWorkspace();
 
-            if(_sourceEntries.Count> 0) {
+            if(_sourceEntries.Count > 0) {
                 _logs.Add(string.Format("Loading {0} files from folder {1}.", _sourceEntries.Count, _folder), "Events", "Load Profile", ParseMessageType.File);
                 _logs.Initialize(listLogs);
             }
             if(_autoUnBind) {
                 _history.Add(_unbinder.SourceSummary);
             }
-            if(_automaticSaveWorkspace) {
-                SaveProfile();
-                InitWorkspace();
-            }
+            SetProfileDetails();
             lblStatus.Text = "Finished...";
             progressBar.Value = 0;
             progressBar.Visible = false;
             _isLoading = false;
             ToolBarMenusVisibility(true);
         }
-
         #endregion - Control Events -
 
         private void profileListBox_DoubleClick(object sender, EventArgs e) {
@@ -440,12 +444,13 @@ namespace Tarsier.VSSource.Unbinder {
                         NewProfile();
                         _selectedWorkspace = _workspacse.GetProfile(item.LineHeader);
                         if(_selectedWorkspace != null) {
+                            _workspaceTable = _selectedWorkspace.WorkspaceTable;
                             _directory = _selectedWorkspace.Directory;
                             _folder = _selectedWorkspace.Name;
                             if(!string.IsNullOrEmpty(_directory)) {
                                 _loadFile = AddFile.FOLDER;
                                 StartLoadFiles(false);
-                                InitHistory(_selectedWorkspace.Name);
+                                InitHistory(_workspaceTable);
                             }
                         }
                     } else {
@@ -461,21 +466,14 @@ namespace Tarsier.VSSource.Unbinder {
         }
         private void tmrCheck_Tick(object sender, EventArgs e) {
             //ToolBarMenusVisibility(!_isLoading);
-            btnUnbind.Enabled = menuItemUnbind.Enabled = listViewFiles.Items.Count > 0;
+            btnUnbind.Enabled = menuItemUnbind.Enabled = (!_isLoading && listViewFiles.Items.Count > 0);
             btnClearHistory.Enabled = clearHistoryToolStripMenuItem.Enabled = (tabControl1.SelectedIndex == 1 && listViewHistory.Items.Count > 0);
         }
 
         private void SetProfileDetails() {
-           /*
-            if(string.IsNullOrEmpty(_folder)) {
-                lblPath.Text = string.Empty;
-                lblPath.Image = Resources.exclamation_red;
-            } else {
-                lblPath.Image = null;
-                lblPath.Text = _folder;
-            }*/
+            lblProfileCaption.Text = _selectedWorkspace.Name;
+            lblStatusFile.Text = (_truncatePath) ? _folder.TruncatePath() : _folder;
             lblPath.Text = (_truncatePath) ? _directory.TruncatePath() : _directory;
-          
         }
 
         private void profileListBox_MouseDoubleClick(object sender, MouseEventArgs e) {
@@ -487,6 +485,11 @@ namespace Tarsier.VSSource.Unbinder {
                 bgWorker.CancelAsync();
                 bgWorker.ProgressChanged -= new ProgressChangedEventHandler(this.bgWorker_ProgressChanged);
                 bgWorker.RunWorkerCompleted -= new RunWorkerCompletedEventHandler(this.bgWorker_RunWorkerCompleted);
+            }
+            if(bgWorkerUnbind.IsBusy) {
+                bgWorkerUnbind.CancelAsync();
+                bgWorkerUnbind.ProgressChanged -= new ProgressChangedEventHandler(this.bgWorker_ProgressChanged);
+                bgWorkerUnbind.RunWorkerCompleted -= new RunWorkerCompletedEventHandler(this.bgWorker_RunWorkerCompleted);
             }
         }
 
@@ -518,7 +521,7 @@ namespace Tarsier.VSSource.Unbinder {
         }
 
         private void bgWorkerUnbind_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
-            _unbinder.UnbindProgress -= UnbindProgress;
+           
             lblStatusFile.Text = (_truncatePath) ? _folder.TruncatePath() : _folder;
             lblStatus.Text = "Finished...";
             progressBar.Value = 0;
@@ -527,9 +530,9 @@ namespace Tarsier.VSSource.Unbinder {
             _isLoading = false;
             ToolBarMenusVisibility(true);
             _history.Add(_unbinder.SourceSummary); //Add source summary
-            InitHistory(_selectedWorkspace.Name);
+            InitHistory(_workspaceTable);
+            _unbinder.UnbindProgress -= UnbindProgress;
         }
 
-       
     }
 }

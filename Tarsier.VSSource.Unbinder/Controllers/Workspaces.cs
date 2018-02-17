@@ -8,7 +8,7 @@ using Tarsier.Extensions;
 using Tarsier.UI;
 
 namespace Tarsier.VSSource.Unbinder.Controllers {
-   public class Workspaces {
+    public class Workspaces {
         private SQLiteHelper sqlite;
         private SQLiteTable table;
         private string defaultTable = "workspace";
@@ -28,7 +28,7 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
             table = new SQLiteTable(tableName);
             table.AddColumn(new SQLiteColumn("ID", true));
             table.AddColumn(new SQLiteColumn("Name", ColType.Text));
-            table.AddColumn(new SQLiteColumn("Path", ColType.Text));
+            table.AddColumn(new SQLiteColumn("WorkspaceTable", ColType.Text));
             table.AddColumn(new SQLiteColumn("FileCount", ColType.Integer));
             table.AddColumn(new SQLiteColumn("ValidFiles", ColType.Integer));
             table.AddColumn(new SQLiteColumn("Directory", ColType.Text));
@@ -46,7 +46,6 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
             } catch {
             }
             return false;
-
         }
         public DataTable GetDataTable(string filter) {
             if(string.IsNullOrEmpty(defaultTable)) {
@@ -63,7 +62,7 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
                     Workspace pro = new Workspace() {
                         ID = dr["ID"].ToSafeInteger(),
                         Name = dr["Name"].ToSafeString(),
-                        Path = dr["Path"].ToSafeString(),
+                        WorkspaceTable = dr["WorkspaceTable"].ToSafeString(),
                         FileCount = dr["FileCount"].ToSafeInteger(),
                         ValidFiles = dr["ValidFiles"].ToSafeInteger(),
                         Directory = dr["Directory"].ToSafeString(),
@@ -78,9 +77,10 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
         public void Add(Workspace pro) {
             Dictionary<string, object> data = new Dictionary<string, object>();
             string code = pro.Directory.RemoveNonAlphaNumeric().ToLower();
+            string workspaceTable = string.IsNullOrEmpty(pro.WorkspaceTable) ? (pro.Name.RemoveNonAlphaNumeric() +code.GetHashCode()).ToLower(): pro.WorkspaceTable;
             string dateUploaded = string.IsNullOrEmpty(pro.LastDateUnbind) ? DateTime.Now.ToShortDateString() : pro.LastDateUnbind;
             data.Add("Name", pro.Name);
-            data.Add("Path", pro.Path);
+            data.Add("WorkspaceTable", workspaceTable);
             data.Add("FileCount", pro.FileCount);
             data.Add("ValidFiles", pro.ValidFiles);
             data.Add("Directory", pro.Directory);
@@ -103,14 +103,14 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
             if(string.IsNullOrEmpty(name)) {
                 throw new ArgumentNullException("name");
             }
-            DataTable dt= sqlite.Select(string.Format(Queries.SELECT_TABLE_WHERE_LIMIT1, defaultTable, string.Format("Name ='{0}'", name)));
+            DataTable dt = sqlite.Select(string.Format(Queries.SELECT_TABLE_WHERE_LIMIT1, defaultTable, string.Format("Name ='{0}'", name)));
             if(dt != null) {
                 if(dt.Rows.Count > 0) {
                     foreach(DataRow dr in dt.Rows) {
                         return new Workspace() {
                             ID = dr["ID"].ToSafeInteger(),
                             Name = dr["Name"].ToSafeString(),
-                            Path = dr["Path"].ToSafeString(),
+                            WorkspaceTable = dr["WorkspaceTable"].ToSafeString(),
                             FileCount = dr["FileCount"].ToSafeInteger(),
                             ValidFiles = dr["ValidFiles"].ToSafeInteger(),
                             Directory = dr["Directory"].ToSafeString(),
@@ -139,11 +139,12 @@ namespace Tarsier.VSSource.Unbinder.Controllers {
                 List<Workspace> profs = GetProfiles();
                 if(profs.Count > 0) {
                     foreach(Workspace p in profs) {
-                      list.Items.Add(new ParseMessageEventArgs(ParseMessageType.Profile,p.Name, p.Directory, "profile"+p.ID,p.LastDateUnbind));
+                        list.Items.Add(new ParseMessageEventArgs(ParseMessageType.Profile, p.Name, p.Directory, "profile" + p.ID, p.LastDateUnbind));
                     }
                 }
                 list.Invalidate();
             }
         }
+        
     }
 }
