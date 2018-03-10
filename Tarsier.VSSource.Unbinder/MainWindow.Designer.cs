@@ -1213,9 +1213,10 @@
             // 
             this.panelLockedBody.Controls.Add(this.label10);
             this.panelLockedBody.Controls.Add(this.label11);
-            this.panelLockedBody.Location = new System.Drawing.Point(9, 6);
+            this.panelLockedBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelLockedBody.Location = new System.Drawing.Point(3, 3);
             this.panelLockedBody.Name = "panelLockedBody";
-            this.panelLockedBody.Size = new System.Drawing.Size(490, 146);
+            this.panelLockedBody.Size = new System.Drawing.Size(535, 196);
             this.panelLockedBody.TabIndex = 6;
             this.panelLockedBody.Visible = false;
             // 
@@ -1227,7 +1228,7 @@
             this.label11.ForeColor = System.Drawing.Color.Red;
             this.label11.Location = new System.Drawing.Point(7, 11);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(478, 15);
+            this.label11.Size = new System.Drawing.Size(523, 15);
             this.label11.TabIndex = 0;
             this.label11.Text = "Please be patient";
             this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1238,7 +1239,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.Location = new System.Drawing.Point(4, 32);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(481, 55);
+            this.label10.Size = new System.Drawing.Size(526, 55);
             this.label10.TabIndex = 1;
             this.label10.Text = "Loading data is in progress. Please wait...";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
