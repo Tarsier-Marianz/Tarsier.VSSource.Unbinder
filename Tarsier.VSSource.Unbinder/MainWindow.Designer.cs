@@ -131,6 +131,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.timerLock = new System.Windows.Forms.Timer(this.components);
+            this.panelLockedBody = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.menuStripUploader.SuspendLayout();
             this.statusStripUploader.SuspendLayout();
             this.toolStripUploader.SuspendLayout();
@@ -156,6 +159,7 @@
             this.tabPageRidFiles.SuspendLayout();
             this.tabPageLogs.SuspendLayout();
             this.panelLocked.SuspendLayout();
+            this.panelLockedBody.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripUploader
@@ -773,6 +777,7 @@
             // 
             // tabPageFiles
             // 
+            this.tabPageFiles.Controls.Add(this.panelLockedBody);
             this.tabPageFiles.Controls.Add(this.listViewFiles);
             this.tabPageFiles.ImageIndex = 3;
             this.tabPageFiles.Location = new System.Drawing.Point(4, 28);
@@ -1204,6 +1209,40 @@
             this.timerLock.Interval = 2000;
             this.timerLock.Tick += new System.EventHandler(this.timerLock_Tick);
             // 
+            // panelLockedBody
+            // 
+            this.panelLockedBody.Controls.Add(this.label10);
+            this.panelLockedBody.Controls.Add(this.label11);
+            this.panelLockedBody.Location = new System.Drawing.Point(9, 6);
+            this.panelLockedBody.Name = "panelLockedBody";
+            this.panelLockedBody.Size = new System.Drawing.Size(490, 146);
+            this.panelLockedBody.TabIndex = 6;
+            this.panelLockedBody.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Location = new System.Drawing.Point(7, 11);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(478, 15);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Please be patient";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.Location = new System.Drawing.Point(4, 32);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(481, 55);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Loading data is in progress. Please wait...";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1254,6 +1293,7 @@
             this.tabPageRidFiles.PerformLayout();
             this.tabPageLogs.ResumeLayout(false);
             this.panelLocked.ResumeLayout(false);
+            this.panelLockedBody.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1367,6 +1407,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Timer timerLock;
+        private System.Windows.Forms.Panel panelLockedBody;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
     }
 }
 

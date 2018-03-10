@@ -487,7 +487,7 @@ namespace Tarsier.VSSource.Unbinder {
                         _selectedWorkspace = null;
                     }
                 }else {
-                    panelLocked.Visible = true;
+                    panelLocked.Visible = panelLockedBody.Visible = true;
                     timerLock.Enabled = true;
                 }
             }
@@ -582,7 +582,7 @@ namespace Tarsier.VSSource.Unbinder {
         }
 
         private void timerLock_Tick(object sender, EventArgs e) {
-            panelLocked.Visible = false;
+            panelLocked.Visible = panelLockedBody.Visible = false;
             timerLock.Enabled = false;
         }
     }
