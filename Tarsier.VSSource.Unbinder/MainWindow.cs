@@ -486,6 +486,9 @@ namespace Tarsier.VSSource.Unbinder {
                     } else {
                         _selectedWorkspace = null;
                     }
+                }else {
+                    panelLocked.Visible = true;
+                    timerLock.Enabled = true;
                 }
             }
         }
@@ -574,6 +577,13 @@ namespace Tarsier.VSSource.Unbinder {
             _logs.Add(string.Format("Unbinding {0} files from folder {1}.", _sourceEntries.Count, _folder), "Events", "Unbind " + _selectedWorkspace.Name, ParseMessageType.Success);
         }
 
+        private void panelLocked_Paint(object sender, PaintEventArgs e) {
 
+        }
+
+        private void timerLock_Tick(object sender, EventArgs e) {
+            panelLocked.Visible = false;
+            timerLock.Enabled = false;
+        }
     }
 }

@@ -127,6 +127,10 @@
             this.tmrCheck = new System.Windows.Forms.Timer(this.components);
             this.tipUploader = new System.Windows.Forms.ToolTip(this.components);
             this.bgWorkerUnbind = new System.ComponentModel.BackgroundWorker();
+            this.panelLocked = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.timerLock = new System.Windows.Forms.Timer(this.components);
             this.menuStripUploader.SuspendLayout();
             this.statusStripUploader.SuspendLayout();
             this.toolStripUploader.SuspendLayout();
@@ -135,6 +139,7 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.workspaceListBox.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelProfileTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -150,6 +155,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pBoxVersionCompare)).BeginInit();
             this.tabPageRidFiles.SuspendLayout();
             this.tabPageLogs.SuspendLayout();
+            this.panelLocked.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripUploader
@@ -678,6 +684,7 @@
             this.workspaceListBox.AutoScrollMinSize = new System.Drawing.Size(171, 0);
             this.workspaceListBox.BackColor = System.Drawing.Color.White;
             this.workspaceListBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.workspaceListBox.Controls.Add(this.panelLocked);
             this.workspaceListBox.DateFont = new System.Drawing.Font("Calibri Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.workspaceListBox.Font = new System.Drawing.Font("Calibri Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.workspaceListBox.ForeColor = System.Drawing.Color.Green;
@@ -1156,6 +1163,49 @@
             this.bgWorkerUnbind.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorkerUnbind_ProgressChanged);
             this.bgWorkerUnbind.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerUnbind_RunWorkerCompleted);
             // 
+            // panelLocked
+            // 
+            this.panelLocked.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelLocked.Controls.Add(this.label9);
+            this.panelLocked.Controls.Add(this.label6);
+            this.panelLocked.Location = new System.Drawing.Point(3, 109);
+            this.panelLocked.Name = "panelLocked";
+            this.panelLocked.Size = new System.Drawing.Size(193, 100);
+            this.panelLocked.TabIndex = 0;
+            this.panelLocked.Visible = false;
+            this.panelLocked.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLocked_Paint);
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(7, 11);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(181, 15);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Please be patient";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.Location = new System.Drawing.Point(4, 32);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(184, 55);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Loading data is in progress. Please wait...";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // timerLock
+            // 
+            this.timerLock.Interval = 2000;
+            this.timerLock.Tick += new System.EventHandler(this.timerLock_Tick);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1184,6 +1234,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.workspaceListBox.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panelProfileTop.ResumeLayout(false);
@@ -1204,6 +1255,7 @@
             this.tabPageRidFiles.ResumeLayout(false);
             this.tabPageRidFiles.PerformLayout();
             this.tabPageLogs.ResumeLayout(false);
+            this.panelLocked.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1313,6 +1365,10 @@
         private System.Windows.Forms.ToolStripMenuItem addFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
+        private System.Windows.Forms.Panel panelLocked;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Timer timerLock;
     }
 }
 
