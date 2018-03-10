@@ -1170,9 +1170,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelLocked.Controls.Add(this.label9);
             this.panelLocked.Controls.Add(this.label6);
-            this.panelLocked.Location = new System.Drawing.Point(3, 109);
+            this.panelLocked.Location = new System.Drawing.Point(3, 3);
             this.panelLocked.Name = "panelLocked";
-            this.panelLocked.Size = new System.Drawing.Size(193, 100);
+            this.panelLocked.Size = new System.Drawing.Size(193, 369);
             this.panelLocked.TabIndex = 0;
             this.panelLocked.Visible = false;
             this.panelLocked.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLocked_Paint);
