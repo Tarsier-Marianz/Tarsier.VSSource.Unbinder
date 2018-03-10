@@ -1178,7 +1178,6 @@
             this.panelLocked.Size = new System.Drawing.Size(199, 375);
             this.panelLocked.TabIndex = 0;
             this.panelLocked.Visible = false;
-            this.panelLocked.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLocked_Paint);
             // 
             // label6
             // 

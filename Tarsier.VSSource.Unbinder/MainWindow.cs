@@ -576,9 +576,17 @@ namespace Tarsier.VSSource.Unbinder {
             _logs.Add(string.Format("Deleting {0} files from folder {1}.", _filesToRid, _folder), "Events", "Delete Files", ParseMessageType.Success);
             _logs.Add(string.Format("Unbinding {0} files from folder {1}.", _sourceEntries.Count, _folder), "Events", "Unbind " + _selectedWorkspace.Name, ParseMessageType.Success);
         }
+        protected override void OnFormClosing(FormClosingEventArgs e) {
 
-        private void panelLocked_Paint(object sender, PaintEventArgs e) {
-
+            if(e.CloseReason.Equals(CloseReason.UserClosing)) {
+                if(MessageBox.Show(Messages.EXIT, "Confirm",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question).Equals(DialogResult.No)) {
+                    e.Cancel = true;
+                } else {
+                    //@---TODO---
+                }
+            }
+            base.OnFormClosing(e);
         }
 
         private void timerLock_Tick(object sender, EventArgs e) {
