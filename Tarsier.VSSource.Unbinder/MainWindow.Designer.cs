@@ -1165,14 +1165,12 @@
             // 
             // panelLocked
             // 
-            this.panelLocked.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelLocked.Controls.Add(this.label9);
             this.panelLocked.Controls.Add(this.label6);
-            this.panelLocked.Location = new System.Drawing.Point(3, 3);
+            this.panelLocked.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelLocked.Location = new System.Drawing.Point(0, 0);
             this.panelLocked.Name = "panelLocked";
-            this.panelLocked.Size = new System.Drawing.Size(193, 369);
+            this.panelLocked.Size = new System.Drawing.Size(199, 375);
             this.panelLocked.TabIndex = 0;
             this.panelLocked.Visible = false;
             this.panelLocked.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLocked_Paint);
@@ -1185,7 +1183,7 @@
             this.label6.ForeColor = System.Drawing.Color.Red;
             this.label6.Location = new System.Drawing.Point(7, 11);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(181, 15);
+            this.label6.Size = new System.Drawing.Size(187, 15);
             this.label6.TabIndex = 0;
             this.label6.Text = "Please be patient";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1196,7 +1194,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.Location = new System.Drawing.Point(4, 32);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(184, 55);
+            this.label9.Size = new System.Drawing.Size(190, 55);
             this.label9.TabIndex = 1;
             this.label9.Text = "Loading data is in progress. Please wait...";
             this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
