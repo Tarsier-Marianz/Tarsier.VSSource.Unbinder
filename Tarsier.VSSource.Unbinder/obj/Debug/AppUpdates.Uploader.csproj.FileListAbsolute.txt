@@ -1,8 +1,0 @@
-d:\users\tarsier\documents\visual studio 2015\Projects\AppUpdates.Uploader\AppUpdates.Uploader\bin\Debug\AppUpdates.Uploader.exe
-d:\users\tarsier\documents\visual studio 2015\Projects\AppUpdates.Uploader\AppUpdates.Uploader\bin\Debug\AppUpdates.Uploader.pdb
-d:\users\tarsier\documents\visual studio 2015\Projects\AppUpdates.Uploader\AppUpdates.Uploader\obj\Debug\AppUpdates.Uploader.csprojResolveAssemblyReference.cache
-d:\users\tarsier\documents\visual studio 2015\Projects\AppUpdates.Uploader\AppUpdates.Uploader\obj\Debug\AppUpdates.Uploader.UploadForm.resources
-d:\users\tarsier\documents\visual studio 2015\Projects\AppUpdates.Uploader\AppUpdates.Uploader\obj\Debug\AppUpdates.Uploader.Properties.Resources.resources
-d:\users\tarsier\documents\visual studio 2015\Projects\AppUpdates.Uploader\AppUpdates.Uploader\obj\Debug\AppUpdates.Uploader.csproj.GenerateResource.Cache
-d:\users\tarsier\documents\visual studio 2015\Projects\AppUpdates.Uploader\AppUpdates.Uploader\obj\Debug\AppUpdates.Uploader.exe
-d:\users\tarsier\documents\visual studio 2015\Projects\AppUpdates.Uploader\AppUpdates.Uploader\obj\Debug\AppUpdates.Uploader.pdb
