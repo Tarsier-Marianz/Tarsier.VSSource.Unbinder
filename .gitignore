@@ -300,11 +300,6 @@ __pycache__/
 
 # Deployment folder
 /Deployment
-Deployment/History.dll
-Deployment/History.dll
-Deployment/Tarsier.Association.dll
-Deployment/Tarsier.Extensions.dll
-Deployment/Tarsier.Regedit.dll
-Deployment/Tarsier.Security.dll
-Deployment/Tarsier.Sources.dll
-Deployment/Tarsier.UI.dll
+/Deployment/*
+Deployment
+Deployment/*
